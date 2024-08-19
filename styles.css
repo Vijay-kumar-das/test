@@ -64,6 +64,8 @@ html, body{
     
 }
 
+
+
 h2{
     color: rgb(99, 76, 224);
     text-align: center;
@@ -72,7 +74,21 @@ h2{
 }
 
 
+@media (max-width: 575px){
+    .container {
+        max-width: max-content;     
+        margin-inline: auto;
+        overflow: hidden;
+      }
 
+      h2{
+        color: rgb(0, 200, 255);
+      }
+
+      #box{
+        background-color: aqua;
+      }
+}
 
 
 
