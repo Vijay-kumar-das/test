@@ -3,26 +3,196 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Text Animation</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Bank-Nifty</title>
+    <link rel="stylesheet" href="styles.css">   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
 
-    <div class="wrapper">
-        <div class="static-txt">Hi</div>
-        <ul class="dynamic-txts">
-            <li><span>We are</span></li>
-            <li><span>Coming</span></li>
-            <li><span>Online</span></li>
-            <li><span>Soon...</span></li>
-        </ul>
-    </div>
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <img src="./icons8-trading-64.png" height="32" width="32" alt=""><a href="index.html">Banknifty</a></div>
+            <ul class="links">
+                <li><a href="./index.html">Daily Analysis</a></li>
+                <li><a href="strategy.html">Strategy</a></li>
+                <li><a href="stocks.html"></a></li>
+                <li><a href="mutual-funds.html"></a></li>
+                <div class="animation start-home"></div>
+            </ul>
+            <a href="./contact-us.html" class="action_btn">Contact Us</a>
+            <div class="toggle_btn">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+
+        <div class="dropdown_menu">
+
+            <li><a href="index.html">Daily Analysis</a></li>
+                <li><a href="strategy.html">Strategy</a></li>
+                <li><a href="stocks.html"></a></li>
+                <li><a href="mutual-funds.html"></a></li>
+                <li><a href="./contact-us.html" class="action_btn">Contact Us</a></li>
+               
+        </div>        
+    </header>
+      
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Home</a>
+        <a href="#">Home</a>
+        <div class="animation start-home"></div>
+       
+    </nav>
+    
 
 
+    <main>
+
+        <div class="chart">'
+           <!-- TradingView Widget BEGIN -->
+		<div class="tradingview-widget-container">
+    	<div class="tradingview-widget-container__widget"></div>
+    	<div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text"></span></a></div>
+    	<script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+    	{
+    	"symbols": [
+      {
+        "proName": "FOREXCOM:SPXUSD",
+        "title": "S&P 500 Index"
+      },
+      {
+        "proName": "FOREXCOM:NSXUSD",
+        "title": "US 100 Cash CFD"
+      },
+      {
+        "proName": "FX_IDC:EURUSD",
+        "title": "EUR to USD"
+      },
+      {
+        "proName": "BITSTAMP:BTCUSD",
+        "title": "Bitcoin"
+      },
+      {
+        "proName": "BITSTAMP:ETHUSD",
+        "title": "Ethereum"
+      }
+		],
+		"showSymbolLogo": true,
+		"isTransparent": false,
+		"displayMode": "adaptive",
+		"colorTheme": "light",
+		"locale": "en"
+		}
+			</script>
+		</div>
+		<!-- TradingView Widget END -->
+        </div>
+
+	
+
+
+
+        <section class="hero">
+            <h1>BankNifty Analysis for  - 3rd Sep 2024</h1>
+
+            <div class="chart">
+                <img src="./charts/Analysis for 12-Sep.PNG" alt="">
+            </div>
+           <p class="previous">
+            Previous close = 51,010 <br>
+            Last Day High  = 51,422
+           </p>
+
+           <p class="resistance">
+            If Breaks:  51,160                    <br>  
+            Resistance level: 51200 > 51255-51280 >  51308 - 51331 >  513358 >  51400-51423/33 > 51455-51491 > <br>
+            51530-51547 > 51583 > 51615-51660 > 51705 -51751 / 51801
+           </p>
+          
+
+           <p class="ldl">
+            Last Day Low : 50,950               <br>
+            If Breaks : 50,912                             <br>
+            Support level: 50879 -50853 -050841 > 50821 > 50777-50733 > 50710 -50693 > 50654 > 50634 > 50601 > 50587 > 50540
+           </p>
+
+           <h3>
+            Note: If gap-up or gap-down opening more than 200 points then wait and  monitor all the component Banks and follow chart movement for right traide entry.
+           </h3>
+            
+        </section>
+
+            
+        
+        
+  
+
+
+
+        
+    </main>
+
+        
+
+    <footer>
+        
+        <div class="footerContainer">    
+            <div class="container">
+                <div class="row">
+                    <div class="footer-col">
+                        <h4>Learning</h4>
+                        <ul>
+                            <li><a href="">Trading</a></li>
+                            <li><a href="">Intraday</a></li>
+                            <li><a href="">Delivery</a></li>
+    
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Investment</h4>
+                        <ul>
+                            <li><a href="./stocks.html">Stocks</a></li>
+                            <li><a href="./mutual-funds.html">Mutual Funds</a></li>
+                            <li><a href="">IPO</a></li>
+    
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>About us</h4>
+                        <ul>
+                            <li><a href="./about-us.html">About us</a></li>
+                            <li><a href="./privacy-policy.html">Privacy Policy</a></li>
+                            <li><a href="./terms-&-conditions.html">Terms & Condition</a></li>
+    
+                        </ul>
+                    </div>
+                    
+                    
+                </div>
+            </div>    	
+            <div class="footerNav">                 
+                
+
+                <div class="socialIcons">
+                    <a href=""><i class="fa-brands fa-facebook"></i></a>
+                    <a href=""><i class="fa-brands fa-twitter"></i></a>
+                    <a href=""><i class="fa-brands fa-square-instagram"></i></a>
+                    <a href=""><i class="fa-brands fa-google-plus"></i></a>
+                </div>
+				
+            </div>       
+            
+        </div>        
+        <div class="footerBottom">
+            <p>© 2024 bankniftyoption.com.  All rights reserved. <span class="designer"></span></p>
+        </div>
+    </footer>
 
 
     
-
-    <script src="script.js"></script>
+    <script type="module" src="scripts.js"></script>
 </body>
 </html>
