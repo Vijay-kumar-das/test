@@ -166,12 +166,6 @@ section#hero {
 }
 
 
-/*
-*nav animation
-*/
-
-
-
 
 /*
 *Responsive
@@ -186,6 +180,7 @@ section#hero {
     }
     .navbar .toggle_btn {
         display: block;
+        gap: 2px;
     }
 }
 
@@ -193,6 +188,7 @@ section#hero {
     .dropdown_menu {
         left: 2rem;
         width: unset;
+         gap: 2px;
     }
     
 }
