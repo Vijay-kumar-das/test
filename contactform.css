@@ -1,0 +1,75 @@
+
+
+.contact-form {
+    margin-top: -20px;
+    margin-bottom: 200px;
+}
+
+
+.container {
+    width: 390px;
+    background-color: white;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+}
+
+.container input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid #777777;
+    margin-bottom: 20px;
+    font-size: 16px;
+    outline: none;
+
+}
+
+.btn {
+    border: none !important;
+    cursor: pointer;
+    background-color: #32cd9c;
+    margin: 15px 0;
+    font-size: 16px;
+    width: 100%;
+    padding: 14px;
+
+}
+
+.btn:hover {
+    background-color: #1f7d5f;
+    color: white;
+}
+
+.message {
+    font-size: 16px;
+    color: rgb(7, 36, 7);
+}
+
+/*
+*  Responsive form
+*/
+
+@media (max-width: 600px) {
+    
+    .container {
+        width: 90vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .message {
+        width: 90vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .container input {
+        width: 90vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
