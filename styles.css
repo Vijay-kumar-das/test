@@ -166,7 +166,6 @@ section#hero {
 }
 
 
-
 /*
 *Responsive
 */
@@ -180,7 +179,7 @@ section#hero {
     }
     .navbar .toggle_btn {
         display: block;
-        gap: 2px;
+        gap: 5px;
     }
 }
 
@@ -188,7 +187,6 @@ section#hero {
     .dropdown_menu {
         left: 2rem;
         width: unset;
-         gap: 2px;
     }
     
 }
@@ -323,8 +321,15 @@ footer {
         text-align: center;
         margin: 10px;
     }
+
+   
+        
+    }
+
     
-}
+    
+    
+
 /*
 *charts
 */
@@ -338,6 +343,7 @@ footer {
    display: flex;
    align-items: center;
    z-index: 1;
+  
 }
 
 .chart.sticky {
@@ -691,7 +697,7 @@ footer {
     color: #fff;
     font-size: 2rem;
     font-family: 'Poppins', sans-serif;
-   margin-top: 200px;
+    margin-top: 200px;
     
    
 }
@@ -725,11 +731,11 @@ footer {
 
 .hero .resistance {
     display: flex;
-    align-content: center;
+    align-items: center;
     justify-content: center;
     color: rgb(9, 247, 9);
     font-size: 20px;
-    padding: 10px 100px;
+    padding: 20px 100px;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -741,7 +747,7 @@ footer {
     justify-content: center;
     color: #fa220a;
     font-size: 20px;
-    padding: 10px 10px;
+    padding: 20px 80px;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -775,11 +781,12 @@ footer {
     
     .hero .resistance {
         font-size: 17px;
-        padding: 10px;
+        padding: 20px;
     }
 
     .hero .ldl {
         font-size: 17px;
+        padding: 20px;
     }     
         
     }
