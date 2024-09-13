@@ -495,7 +495,7 @@ footer {
     align-items: center;
     justify-content: center;
     color: #fff;
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-family: 'Poppins', sans-serif;
     margin-top: 200px;
     
@@ -570,8 +570,10 @@ footer {
         }
 
     .hero h1 {
-        font-size: 17px;
-        align-content: center;       
+        font-size: 35px;
+        align-content: center;  
+        display: flex;
+       text-align: center;
         
     }
 
