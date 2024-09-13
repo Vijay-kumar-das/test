@@ -3,49 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>banknifty</title>
-    <link rel="stylesheet" href="styles.css">   
+    <title>BankNifty</title>
+    <link rel="stylesheet" href="styles.css">       
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
 
-    <header>
-        <div class="navbar">
-            <div class="logo">
-                <img src="./icons8-trading-64.png" height="32" width="32" alt=""><a href="index.html">Banknifty</a></div>
-            <ul class="links">
-                <li><a href="./index.html">Daily Analysis</a></li>
-                <li><a href="strategy.html">Strategy</a></li>
-                <li><a href="stocks.html"></a></li>
-                <li><a href="mutual-funds.html"></a></li>
-                <div class="animation start-home"></div>
-            </ul>
-            <a href="./contact-us.html" class="action_btn">Contact Us</a>
-            <div class="toggle_btn">
-                <i class="fa-solid fa-bars"></i>
-            </div>
+    <nav>
+        <input id="nav-toggle" type="checkbox">
+        <div class="logo"> 
+          <a href="index.html"><span style="color: #1abc9c;">Bank</span><strong>nifty</strong></a></div>
         </div>
-
-        <div class="dropdown_menu">
-
-            <li><a href="index.html">Daily Analysis</a></li>
-                <li><a href="strategy.html">Strategy</a></li>
-                <li><a href="stocks.html"></a></li>
-                <li><a href="mutual-funds.html"></a></li>
-                <li><a href="./contact-us.html" class="action_btn">Contact Us</a></li>
-               
-        </div>        
-    </header>
+        <ul class="links">
+            <li><a href="./index.html">Daily Analysis</a></li>
+            <li><a href="./strategy.html">Stragegy</a></li>
+            <li><a href="./contact-us.html">Contact us</a></li>
+            <div class="animation start-home"></div>
+        </ul>
+        <label for="nav-toggle" class="icon-burger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </label>
+    </nav>
       
-
-  
+    
+    
     
 
 
-    <main>	
-
-
+    <main>
 
         <section class="hero">
             <h1>BankNifty Analysis for  - 3rd Sep 2024</h1>
@@ -146,5 +134,6 @@
 
     
     <script type="module" src="scripts.js"></script>
+    
 </body>
 </html>
