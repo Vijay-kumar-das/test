@@ -875,7 +875,7 @@ nav .links a {
     padding: 1em;
     font-size: 16px;
     font-weight: bold;
-   color: #1abc9c; 
+   color: #fff; 
 }
 
 #nav-toggle {
@@ -924,6 +924,7 @@ nav .icon-burger .line {
 
     nav .links a {
         font-size: 20px;
+        color: #1abc9c;   
     }
 
     nav :checked ~ .links {
@@ -960,7 +961,7 @@ nav .animation {
     position: absolute;
     height: 4%;
     bottom:  10%;   
-    background-color: #fff;  
+    background-color: #1abc9c;   
     width: 125px;
     border-radius: 5px;
     transition: all 0.5s ease 0s;
