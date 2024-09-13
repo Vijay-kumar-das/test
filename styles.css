@@ -10,215 +10,10 @@
 body {
     height: 100vh;
     background-color: #000;
-       
-    
-}
-
-li {
-    list-style: none;
-    
-
-}
-
-a {
-    text-decoration: none;
-    color: #fff;
-    font-size: 1rem;
-      
-    
-}
-
-/*
-* nav animation
-*/
-
-
-
-
-
-.logo {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 2px;
-    letter-spacing: 1px;
-    font-size: 20px;
-}
-
-media (max-width: 600px) {
-    .logo{
-        margin-right: 20px;
-    }
-}
-
-a:hover {
-   color: orange;
-   
-    
-    
-}
-
-header {
-    position: relative;
-    padding: 0.2rem;
-}
-
-.navbar {
-    width: 100%;
-    height: 60px;
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-   
-}
-
-.navbar .logo a {
-    font-size: 1.5rem;
-    font-weight: bold;    
-}
-
-.navbar .links {
-    display: flex;
-    gap: 2rem;
-      
- 
-}
-
-/*
-* nav animation
-*/
-
-
-
-
-
-
-
-.navbar .toggle_btn {
-    color: #fff;
-    font-size: 1.5rem;
-    cursor: pointer;
-    display: none;
-    
-    
-}
-
-.action_btn {
-    background-color: orange;
-    color: #fff;
-    padding: 0.5rem 1rem;
-    border: none;
-    outline: none;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: scale 0.2 ease;
-}
-
-.action_btn:hover {
-    scale: 1.05;
-    color: #fff;
-}
-
-.action_btn :active {
-    scale: 0.95;
-}
-
-.dropdown_menu {
-    display: none;
-    position: absolute;
-    right: 2rem;
-    top: 60px;
-    width: 300px;
-    height: 0;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(15px);
-    border-radius: 10px;
-    overflow: hidden;
-    transition: height 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.dropdown_menu {
-    display: block;
-}
-
-.dropdown_menu.open {
-    height: 240px;
-}
-
-.dropdown_menu li {
-    padding: 0.7rem;
-    display: flex;
-    align-items: centerd;
-    justify-content: center;
-}
-
-.dropdown_menu .action_btn {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-section#hero {
-    height: calc(100vh - 60px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    color: #fff;
+           
 }
 
 
-/*
-*Responsive
-*/
-
-
-
-@media (max-width: 992px) {
-    .navbar .links,
-    .navbar .action_btn {
-        display: none;
-    }
-    .navbar .toggle_btn {
-        display: block;
-        gap: 5px;
-    }
-}
-
-@media (max-width: 576px) {
-    .dropdown_menu {
-        left: 2rem;
-        width: unset;
-    }
-    
-}
-
-/*
-  *sticky
-*/
-
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: 0.6s;
-    padding: 40px 100px;
-    z-index: 100000;
-}
-
-
-header.sticky {
-    padding: 5px 100px;
-    background: #221547;
-}
 
 
 /*
@@ -327,8 +122,7 @@ footer {
         text-align: center;
         margin: 10px;
     }
-
-   
+  
         
     }
 
@@ -368,7 +162,7 @@ footer {
     color:#ac9696;
     font-size: 2.3rem;
     padding: -30px;
-    margin-bottom: 30px;
+    margin-bottom: 250px;
     font-family: 'Poppins', sans-serif;
 
 }
@@ -808,7 +602,7 @@ footer {
 }
 
 .footer {
-     background-color: #3258a8;
+     background-color: #1abc9c; 
      padding: 70px 0;
 }
 
@@ -850,7 +644,7 @@ footer {
 .footer-col ul li a {
     font-size: 15px;
     text-decoration: none;
-    color: #227B94;    
+    color: #1abc9c;    
     display: block;
     margin-bottom: 10px;
     transition: all .3s ease;
@@ -1013,9 +807,160 @@ footer {
 @media (max-width: 600px) {
     .strategy {
         margin-left: 0px;
-        margin-right: -15px;
-       
+        margin-right: -15px;      
        
         
     }
 }
+
+
+    
+
+/*
+* new navbar
+*/
+
+
+nav {
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    right: 0;
+    top: 0;
+    font-family: 'Poppins', sans-serif;
+    height: 80px;
+    background-color: #210e42;
+    padding: 0 5%;
+}
+
+nav .logo {
+    float: left;
+    width: 40px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    font-size: 25px;
+}
+
+nav .logo a {
+    text-decoration: none;
+    color: #fff;
+}
+
+
+nav .links {
+    float: right;
+    padding: 0;
+    margin: 0;
+    width: 60%;
+    height: 100%;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    
+}
+
+nav .links li {
+    list-style: none;
+    
+}
+
+nav .links a {
+    text-decoration: none;
+    display: block;
+    padding: 1em;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+}
+
+#nav-toggle {
+    position: absolute;
+    display: none;
+}
+
+nav .icon-burger {
+    display: none;
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+nav .icon-burger .line {
+    width: 30px;
+    height: 5px;
+    background-color: #fff;
+    margin: 5px;
+    border-radius: 3px;
+}
+
+@media screen and (max-width: 768px) {
+
+    nav .logo {
+        float: none;
+        width: auto;
+        justify-content: center;
+    }    
+    nav .links {
+        float: none;
+        position: fixed;
+        z-index: 9;
+        left: 0;
+        right: 0;
+        top: 100px;
+        bottom: 100%;
+        background-color: #210e42;
+        flex-direction: column;        
+        width: auto;
+        height: auto;
+        overflow: hidden;
+        transition: all .5s ease-in-out;
+    }
+
+    nav .links a {
+        font-size: 20px;
+    }
+
+    nav :checked ~ .links {
+        bottom: 0;
+    }
+
+    nav .icon-burger {
+        display: block;
+    }
+    
+    nav :checked ~  .icon-burger .line:nth-child(1) {
+        transform: translateY(10px) rotate(225deg);
+    }
+
+    
+    nav :checked ~  .icon-burger .line:nth-child(3) {
+        transform: translateY(-10px) rotate(-225deg);
+    }
+
+    nav :checked ~  .icon-burger .line:nth-child(2) {
+        transform: translateY(-10px) rotate(-225deg);
+        opacity: 0;
+    }
+
+    nav .animation {
+        display: none;
+    }
+}
+
+/*
+* nav Animation
+*/
+nav .animation {
+    position: absolute;
+    height: 4%;
+    bottom:  10%;   
+    background-color: #1abc9c;    
+    width: 125px;
+    border-radius: 5px;
+    transition: all 0.5s ease 0s;
+}
+
+
