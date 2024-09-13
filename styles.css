@@ -573,7 +573,8 @@ footer {
         font-size: 35px;
         align-content: center;  
         display: flex;
-       text-align: center;
+        text-align: center;
+        font-weight: normal;
         
     }
 
