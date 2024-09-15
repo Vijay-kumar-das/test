@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+
+body {    
+    
+    justify-content: center;
+    align-items: center;
+    background-color: #082032;
+}
+
+
+.wrapper {
+    display: flex;
+    margin-top: 200px;
+    margin-bottom: -90px;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapper .static-txt {
+    color: #fff;
+    font-size: 60px;
+    font-weight: 400;
+}
+
+.dynamic-txts li {
+    list-style: none;
+    color: #1abc9c;   
+    font-size: 60px;
+    font-weight: 500;
+    position: relative;
+
+}
+
+.wrapper .dynamic-txts {
+    margin-left: 15px;
+    line-height: 90px;
+    height: 90px;
+    overflow: hidden;
+}
+
+
+.dynamic-txts li {
+    position: relative;
+    list-style: none;
+    color: #1abc9c;   
+    font-size: 60px;
+    font-weight: 500;
+    top: 0;
+    position: relative;
+    animation: slide 12s steps(4) infinite;
+}
+
+@keyframes slide {
+
+    100% {
+        top: -360px;
+    }
+    
+}
+
+
+.dynamic-txts li::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #082032;
+    border-left: 2px solid #ff4c29;
+    animation: typing 3s steps(10) infinite;
+}
+
+@keyframes typing {
+    40%,
+    60% {
+        left: calc(100% + 30px);
+    }
+    100%{
+        left: 0;
+    }
+}
+
+/*
+* Responsive
+*/
+
+
+@media screen and (max-width: 768px) {
+
+    
+.wrapper {
+    display: flex;
+    margin-top: 200px;
+    margin-bottom: -90px;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapper .static-txt {
+    color: #fff;
+    font-size: 40px;
+    font-weight: 300;
+}
+
+.dynamic-txts li {
+    list-style: none;
+    color: #1abc9c;   
+    font-size: 40px;
+    font-weight: 400;
+    position: relative;
+
+}
+
+.wrapper .dynamic-txts {
+    margin-left: 15px;
+    line-height: 90px;
+    height: 90px;
+    overflow: hidden;
+}
+
+
+.dynamic-txts li {
+    position: relative;
+    list-style: none;
+    color: #1abc9c;   
+    font-size: 40px;
+    font-weight: 500;
+    top: 0;
+    position: relative;
+    animation: slide 12s steps(4) infinite;
+}
+
+
+}
