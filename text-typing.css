@@ -91,9 +91,9 @@ body {
 
     
 .wrapper {
-    display: flex;
-    margin-top: 200px;
-    margin-bottom: -90px;
+   display: flex;
+    margin-top: 140px;
+    margin-bottom: -120px;
     align-items: center;
     justify-content: center;
 }
