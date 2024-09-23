@@ -1,158 +1,76 @@
 <!DOCTYPE html>
+<!-- Coding By CodingNepal - www.codingnepalweb.com -->
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Strategy</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Card Slider HTML & CSS | CodingNepal</title>
+  <!-- Linking Google fonts for icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <!-- Linking SwiperJS CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link rel="stylesheet" href="strategy.css">
 </head>
-
 <body>
-    
-    <nav>
-        <input id="nav-toggle" type="checkbox">
-        <div class="logo"> 
-          <a href="index.html"><span style="color: #1abc9c;">Bank</span><strong>nifty</strong></a></div>
-        </div>
-        <ul class="links">
-            <li><a href="./index.html">Daily Analysis</a></li>
-            <li><a href="./strategy.html">Stragegy</a></li>
-            <li><a href="./contact-us.html">Contact us</a></li>
-            <div class="animation start-home"></div>
-        </ul>
-        <label for="nav-toggle" class="icon-burger">
-            <div class="line"></div>
-            <div class="line"></div>
-            <div class="line"></div>
-        </label>
-    </nav>
-   
-    
-    
+  <div class="container swiper">
+    <div class="card-wrapper">
+      <!-- Card slides container -->
+      <ul class="card-list swiper-wrapper">
+        <li class="card-item swiper-slide">
+          <a href="#" class="card-link">
+            <img src="./PIC.avif" alt="Card Image" class="card-image">
+            <p class="badge badge-designer">Designer</p>
+            <h2 class="card-title">Lorem ipsum dolor sit explicabo adipisicing elit</h2>
+            <button class="card-button material-symbols-rounded">arrow_forward</button>
+          </a>
+        </li>
+        <li class="card-item swiper-slide">
+          <a href="#" class="card-link">
+            <img src="./PIC.avif" alt="Card Image" class="card-image">
+            <p class="badge badge-developer">Developer</p>
+            <h2 class="card-title">Lorem ipsum dolor sit explicabo adipisicing elit</h2>
+            <button class="card-button material-symbols-rounded">arrow_forward</button>
+          </a>
+        </li>
+        <li class="card-item swiper-slide">
+          <a href="#" class="card-link">
+            <img src="./PIC.avif" alt="Card Image" class="card-image">
+            <p class="badge badge-marketer">Marketer</p>
+            <h2 class="card-title">Lorem ipsum dolor sit explicabo adipisicing elit</h2>
+            <button class="card-button material-symbols-rounded">arrow_forward</button>
+          </a>
+        </li>
+        <li class="card-item swiper-slide">
+          <a href="#" class="card-link">
+            <img src="./PIC.avif" alt="Card Image" class="card-image">
+            <p class="badge badge-gamer">Gamer</p>
+            <h2 class="card-title">Lorem ipsum dolor sit explicabo adipisicing elit</h2>
+            <button class="card-button material-symbols-rounded">arrow_forward</button>
+          </a>
+        </li>
+        <li class="card-item swiper-slide">
+          <a href="#" class="card-link">
+            <img src="./PIC.avif" alt="Card Image" class="card-image">
+            <p class="badge badge-editor">Editor</p>
+            <h2 class="card-title">Lorem ipsum dolor sit explicabo adipisicing elit</h2>
+            <button class="card-button material-symbols-rounded">arrow_forward</button>
+          </a>
+        </li>
+      </ul>
 
+       <!-- Pagination -->
+      <div class="swiper-pagination"></div>
 
-    <main>      
+      <!-- Navigation Buttons -->
+      <div class="swiper-slide-button swiper-button-prev"></div>
+      <div class="swiper-slide-button swiper-button-next"></div>
+    </div>
+  </div>
 
-               
-            <div class="strategy">
-                <div class="card">
-                    <div class="content">
-                        <h2>01</h2>
-                        <h3>Card One</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam dolor, commodi
-                        doloribus cum qui mollitia temporibus nostrum autem accusamus? Cumque numquam
-                        officiis nesciunt iusto excepturi, quam modi blanditiis. Eius, reprehenderit.</p>
-                        <a href="#">Read More</a>
-                    </div>
-                </div>
+  <!-- Linking SwiperJS script -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-                <div class="card">
-                    <div class="content">
-                        <h2>02</h2>
-                        <h3>Card Two</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam dolor, commodi
-                        doloribus cum qui mollitia temporibus nostrum autem accusamus? Cumque numquam
-                        officiis nesciunt iusto excepturi, quam modi blanditiis. Eius, reprehenderit.</p>
-                        <a href="#">Read More</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="content">
-                        <h2>03</h2>
-                        <h3>Card Three</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam dolor, commodi
-                        doloribus cum qui mollitia temporibus nostrum autem accusamus? Cumque numquam
-                        officiis nesciunt iusto excepturi, quam modi blanditiis. Eius, reprehenderit.</p>
-                        <a href="#">Read More</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="content">
-                        <h2>03</h2>
-                        <h3>Card Three</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam dolor, commodi
-                        doloribus cum qui mollitia temporibus nostrum autem accusamus? Cumque numquam
-                        officiis nesciunt iusto excepturi, quam modi blanditiis. Eius, reprehenderit.</p>
-                        <a href="#">Read More</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="content">                        
-                        <h2>03</h2>
-                        <h3>Card Three</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam dolor, commodi
-                        doloribus cum qui mollitia temporibus nostrum autem accusamus? Cumque numquam
-                        officiis nesciunt iusto excepturi, quam modi blanditiis. Eius, reprehenderit.</p>
-                        <a href="#">Read More</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="content">                        
-                        <h2>03</h2>
-                        <h3>Card Three</h3>                       
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam dolor, commodi
-                        doloribus cum qui mollitia temporibus nostrum autem accusamus? Cumque numquam
-                        officiis nesciunt iusto excepturi, quam modi blanditiis. Eius, reprehenderit.</p>
-                        <a href="#">Read More</a>
-                        
-                    </div>
-                </div>
-            </div>
-
-
-
-
-        
-    </main>
-
-
-
-
-
-
-
-    <footer>
-        <div class="footerContainer">
-        	<div class="socialIcons">
-                <a href=""><i class="fa-brands fa-facebook"></i></a>
-                <a href=""><i class="fa-brands fa-twitter"></i></a>
-                <a href=""><i class="fa-brands fa-square-instagram"></i></a>
-                <a href=""><i class="fa-brands fa-google-plus"></i></a>
-            </div>
-            <div class="footerNav">
-                <ul>
-                    <li><a href="about-us.html">About Us</a></li>
-                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                    <li><a href="terms-&-conditions.html">Terms of Use</a></li>                    
-                </ul>
-				
-            </div>       
-            
-        </div>        
-        <div class="footerBottom">
-            <p>© 2024 bankniftyoption. All rights reserved. <span class="designer"></span></p>
-        </div>
-    </footer>
-
-
-    
-    <script type="module" src="scripts.js"></script>    
-
-    <script type="text/javascript" src="vanilla-tilt.js"></script>
-    <script type="text/javascript">
-	VanillaTilt.init(document.querySelectorAll(".card"),{
-		max: 25,
-		speed: 400,
-        glare: true,
-        "max-glare":1,
-	});
-	
-	//It also supports NodeList
-	VanillaTilt.init(document.querySelectorAll(".card"));
-    </script>
-   
+  <!-- Linking custom script -->
+  <script src="strategy.js"></script>
 </body>
 </html>
