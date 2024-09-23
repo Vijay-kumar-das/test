@@ -9,8 +9,9 @@
 */
 
 .headlinepast h3  {
-   margin-top: 100px;
+   margin-top: 130px;
    color: white;
+   font-size: 30px;
    display: flex;
    justify-content: center;
    align-items: center;
@@ -19,9 +20,11 @@
 
 .headlinepast p {
     color: white;
-   display: flex;
-   justify-content: center;
-   margin-bottom: -40px;
+    font-size: 25px;
+    padding: 7px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: -40px;
 }
 
 
@@ -36,6 +39,7 @@
         display: flex;
         justify-content: center;
         text-align: center;
+        font-size: 22px;
     }
 
     .headlinepast p {
@@ -44,6 +48,7 @@
         display: flex;
         justify-content: center;
         text-align: center;
+        font-size: 18px;
     }
 }
 
