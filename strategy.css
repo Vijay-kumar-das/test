@@ -1,19 +1,16 @@
 /* Importing Google fonts - Inter */
 @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap');
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Inter", sans-serif;
-}
 
-body {
+
+.container swiper {  
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
+  min-height: 200vh;
   background: #000;
+  
+ 
 }
 
 .card-wrapper {
@@ -37,6 +34,7 @@ body {
   border: 2px solid transparent;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.05);
   transition: 0.2s ease;
+  margin-top: 200px;
 }
 
 .card-list .card-item .card-link:active {
