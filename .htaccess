@@ -1,5 +1,33 @@
+#remove html file extension https://bankniftyoption.com/index.html
+# to https://bankniftyoption.com/index
+1 RewriteEngine on
+2 RewriteCond %{REQUEST_FILENAME} !-d
+3 RewriteCond %{REQUEST_FILENAME} !-f
+4 RewriteRule ^([^\.]+)$ $1.html [NC, L]
+
+#remove html file extension https://www.bankniftyoption.com/strategy.html
+# to https://www.bankniftyoption.com/strategy
+1 RewriteEngine on
+2 RewriteCond %{REQUEST_FILENAME} !-d
+3 RewriteCond %{REQUEST_FILENAME} !-f
+4 RewriteRule ^([^\.]+)$ $1.html [NC, L]
+
+#remove html file extension https://bankniftyoption.com/past-analysis.html
+# to https://bankniftyoption.com/past-analysis
+1 RewriteEngine on
+2 RewriteCond %{REQUEST_FILENAME} !-d
+3 RewriteCond %{REQUEST_FILENAME} !-f
+4 RewriteRule ^([^\.]+)$ $1.html [NC, L]
+
+#remove html file extension https://bankniftyoption.com/contact-us.html
+# to https://bankniftyoption.com/contact-us
+1 RewriteEngine on
+2 RewriteCond %{REQUEST_FILENAME} !-d
+3 RewriteCond %{REQUEST_FILENAME} !-f
+4 RewriteRule ^([^\.]+)$ $1.html [NC, L]
+
 #remove html file extension https://www.bankniftyoption.com/about-us.html
-# to https://www.bankniftyoption.com/about
+# to https://www.bankniftyoption.com/about-us
 1 RewriteEngine on
 2 RewriteCond %{REQUEST_FILENAME} !-d
 3 RewriteCond %{REQUEST_FILENAME} !-f
