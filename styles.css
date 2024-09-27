@@ -551,6 +551,14 @@ footer {
     font-family: 'Poppins', sans-serif;
 }
 
+
+.hero h5 {
+    color: red;
+    font-size: 18px;
+    font-weight: 400;
+    padding: 0px 300px;
+}
+
 .hero h3 {
     display: flex;
     align-items: center;
