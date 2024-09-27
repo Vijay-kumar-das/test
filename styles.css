@@ -540,6 +540,14 @@ footer {
 }
 
 
+.hero h4 {
+    font-size: 18px;
+    color: rgb(9, 247, 9);
+    font-weight: 400;
+    padding: 0px 300px;
+}
+
+
 
 .hero .ldl {
     display: flex;
