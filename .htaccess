@@ -1,0 +1,7 @@
+#remove html file extension https://www.bankniftyoption.com/about-us.html
+# to https://www.bankniftyoption.com/about
+1 RewriteEngine on
+2 RewriteCond %{REQUEST_FILENAME} !-d
+3 RewriteCond %{REQUEST_FILENAME} !-f
+4 RewriteRule ^([^\.]+)$ $1.html [NC, L]
+
