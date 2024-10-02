@@ -130,26 +130,7 @@ footer {
     
     
 
-/*
-*charts
-*/
 
-.chart {
-   position: relative;  
-   top: 0;
-   left: 0;
-   width: 100%;  
-   padding: 150px;
-   display: flex;
-   align-items: center;
-   z-index: 1;
-  
-}
-
-.chart.sticky {
-    padding: 5px 100px;
-    background: #8f1818;
-}
 
 /*
 * About Us
