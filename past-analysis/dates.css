@@ -34,7 +34,10 @@
 
 .daily-analysis .banknifty {
     color: white;
-    font-size: 30px;
+    font-size: 30px;    
+    display: flex;
+    justify-content: center;
+    align-content: center;
 
 }
 
