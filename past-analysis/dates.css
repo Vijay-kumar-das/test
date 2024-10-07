@@ -2,9 +2,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
     margin-top: 200px;
     font-family: sans-serif;
 }
+
 
 .daily-analysis .h-two {
     display: flex;
