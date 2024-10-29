@@ -622,8 +622,13 @@ footer {
         padding: 0px 30px;
      }
 
+   .chart img {
+    width: 100%;
+    height: auto;
+}
 
-           }
+
+  }
             
         
 
