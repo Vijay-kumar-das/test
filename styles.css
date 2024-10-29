@@ -521,10 +521,14 @@ footer {
 }
 
 .hero h4 {
-    font-size: 18px;
-    color: rgb(9, 247, 9);
-    font-weight: 400;
-    padding: 0px 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f1da0a;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 20px;
+    font-family: 'Poppins', sans-serif;
 }
 
 
