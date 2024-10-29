@@ -563,7 +563,10 @@ footer {
 
 @media (max-width: 600px) {
        
-        
+    .chart img {
+      width: 100%;
+      height: auto;
+     }
 
        .daily-analysis img {
             width: 100%;
