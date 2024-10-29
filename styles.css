@@ -524,7 +524,7 @@ footer {
     font-size: 18px;
     color: rgb(9, 247, 9);
     font-weight: 400;
-    padding: 0px 200px;
+    padding: 0px 300px;
 }
 
 
@@ -561,7 +561,13 @@ footer {
 
 
 @media (max-width: 600px) {
-       
+
+	.hero h4 {
+    font-size: 18px;
+    color: rgb(9, 247, 9);
+    font-weight: 400;
+    padding: 0px 200px;
+}
         
 
        .daily-analysis img {
@@ -628,8 +634,7 @@ footer {
 }
 
 
-  }
-            
+  }       
         
 
  
