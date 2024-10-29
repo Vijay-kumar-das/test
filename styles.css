@@ -616,25 +616,14 @@ footer {
             font-size: 18px;
         }
 
-	.hero h1 {
-	    display: flex;
-	    align-items: center;
-	    justify-content: center;
-	    color: #fff;
-	    font-size: 20px;
-	    font-family: 'Poppins', sans-serif;
-	    margin-top: 200px;     
-   
-       }
+	    
 
-    
-
-        }
+ }
             
         
 
     .hero h1 {
-        font-size: 35px;
+        font-size: 20px;
         align-content: center;  
         display: flex;
         text-align: center;
