@@ -562,15 +562,7 @@ footer {
 
 @media (max-width: 600px) {
 
-	.hero h4 {
-    font-size: 18px;
-    color: rgb(9, 247, 9);
-    font-weight: 400;
-    padding: 0px 200px;
-}
-        
-
-       .daily-analysis img {
+           .daily-analysis img {
             width: 100%;
             height: auto;
         }
@@ -633,11 +625,6 @@ footer {
     height: auto;
 }
 
-
-  }       
-        
-
- 
 
     .hero .previous {
         font-size: 17px;
