@@ -468,7 +468,7 @@ footer {
 
 
 /*
-*hero section
+*hero 
 */
 
 .hero h1 {
@@ -520,6 +520,7 @@ footer {
     font-family: 'Poppins', sans-serif;
 }
 
+
 .hero h4 {
     font-size: 18px;
     color: rgb(9, 247, 9);
@@ -538,6 +539,7 @@ footer {
     padding: 20px 80px;
     font-family: 'Poppins', sans-serif;
 }
+
 
 .hero h5 {
     color: red;
@@ -558,73 +560,20 @@ footer {
 }
 
 
-
-
 @media (max-width: 600px) {
-
-           .daily-analysis img {
+       .hero img {
             width: 100%;
             height: auto;
         }
 
-        .daily-analysis .if-breaks {
-            justify-content: start;
-            align-items: start;
-            margin-left: -180px;
-            margin-right: -100px;          
-                        
-        }
-
-        .daily-analysis .resist-levels {
-           
-            justify-content: start;
-            align-items: start;
-            margin-left: -180px;
-            margin-right: -100px;  
-        }
-
-        .daily-analysis .if-breaks-low {
-            justify-content: start;
-            align-items: start;
-            margin-left: -180px;
-            margin-right: -100px;  
-        }
-
-        .daily-analysis .support-levels {
-            justify-content: start;
-            align-items: start;
-            margin-left: -180px;
-            margin-right: -100px;  
-        }
-
-        .daily-analysis h3 {            
-            margin-left: -180px;
-            margin-right: -100px;
-        }
-
-        .daily-analysis .h-line1 {
-            display: flex;
-            justify-content: center;           
-            text-align: center;
-            color: white;
-            font-size: 18px;
-        }   
-
-	
     .hero h1 {
-        font-size: 25px;
+        font-size: 35px;
         align-content: center;  
         display: flex;
         text-align: center;
         font-weight: normal;
-        padding: 0px 30px;
-     }
-
-   .chart img {
-    width: 100%;
-    height: auto;
-}
-
+        
+    }
 
     .hero .previous {
         font-size: 17px;
@@ -638,9 +587,9 @@ footer {
     .hero .ldl {
         font-size: 17px;
         padding: 20px;
-    }  
+    }     
 
-        
+           
 .hero h4 {
     font-size: 18px;
     color: rgb(9, 247, 9);
@@ -658,134 +607,7 @@ footer {
     
 }
         
-    
-
-/*
-* New hero section start
-*/
-
-
-
-
-.daily-analysis h1 {
-    color: rgb(247, 243, 243);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 100px;  
-    
-}
-
-.daily-analysis h2 {
-    color: white;
-    font-size: 17px;
-    font-weight: 300;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 0px;
-    margin-bottom: 40px;
-}
-
-.daily-analysis .h-line1 {
-    color: red;
-    display: block;
-    padding: 20px 90px;
-}
-
-.daily-analysis .article {
-    color: white;
-    padding: 20px 90px;
-}
-
-/*
-* hero section
-*/
-
-	
-.daily-analysis .charting {
-    display: flex;
-    align-items: center;
-    justify-content: center;    
-    width: 100%;
-    height: 100%;
-    padding: 30px 22px;
-   
-}
-
-.charting img {
-    width: 80%;
-    height: 90%;
-}
-
-.daily-analysis .previous-close {
-    color: white;
-    text-align: center;
-    font-size: 20px;
-}
-
-.daily-analysis .if-breaks {
-    color: rgb(8, 248, 8);
-    font-size: 20px;
-    padding: 40px 200px;
-}
-
-.daily-analysis .resist-levels {
-    color: rgb(8, 248, 8);
-    font-size: 20px;
-    font-weight: 300;
-    padding: 0px 200px;
-    margin-top: -40px;
-}
-
-.daily-analysis span{
-    color: white;
-}
-
-.daily-analysis h3 {
-    color: yellow;
-    padding: 0px 200px; 
-    font-size: 20px;
-    font-weight: 400;
-}
-
-.daily-analysis .lastday-low {
-    color: white;
-    font-size: 20px;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   margin-top: 60px;
-
-}
-
-.daily-analysis .if-breaks-low {
-    color: #f55307;
-    font-size: 20px;
-    padding: 50px 200px;
-    
-}
-
-.daily-analysis .support-levels {
-    color: #f55307;
-    font-size: 20px;
-    padding: 0px 200px;
-    margin-top: -40px;
-    margin-bottom: 50px;
-    font-weight: 300;
-}
-
-
-
-
-
-/*
-* New hero section ends here
-*/
-
-
-
-
+    }
 
     /*
     * Footer3
