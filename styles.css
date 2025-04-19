@@ -1047,6 +1047,18 @@ nav .animation {
 }
 
 
+h1 {
+    color: #fff;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-top: 100px;
+}
+h2 {
+    color: #fff;
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 20px;
+}
 
 /*
 * xxxxx
