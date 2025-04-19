@@ -1047,6 +1047,10 @@ nav .animation {
 }
 
 
+/*
+* Nifty option page on stragey
+*/
+
 h1 {
     color: #fff;
     font-size: 2.5rem;
@@ -1060,8 +1064,15 @@ h2 {
     margin-top: 20px;
 }
 
-/*
-* xxxxx
-*/
+
+p {
+    color: #fff;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-top: 20px;
+    padding: 0 20px;
+}
+
+
 
 
