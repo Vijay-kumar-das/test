@@ -35,9 +35,7 @@ body{
 
 @media (max-width: 767px) {
   .nifti {   
-    display: flex; 
-    align-items: center;
-    justify-content: center;
+    display: flex;   
     font-weight: 300;
     margin-top: 150px;     
     padding: 25px 25px; 
