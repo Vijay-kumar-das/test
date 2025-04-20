@@ -10,6 +10,9 @@
   
 }
 
-.titlesection{
-  padding: 200px;
+.niftycontainer .titlesection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 200px;
 }
