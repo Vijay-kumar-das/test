@@ -1,0 +1,10 @@
+.niftycontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: 200px;
+  margin-right: 100px;
+ color: rgb(140, 22, 236);
+  
+}
