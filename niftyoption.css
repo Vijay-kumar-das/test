@@ -19,3 +19,9 @@
   align-items: center;
   padding: 200px;
 }
+
+
+
+.niftycontainer h2 p{
+  gap: 20px;
+}
