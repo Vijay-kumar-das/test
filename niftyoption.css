@@ -34,8 +34,7 @@ body{
 
 
 @media (max-width: 767px) {
-  .niftycontainer {
-    display: flex;   
+  .niftycontainer {   
     align-items: center;
     justify-content: center;    
     color: black;   
