@@ -55,15 +55,6 @@ body{
 }
 
 
-@media (max-width: 767px) {
-  .niftyarticle {   
-    display: flex;    
-    padding: 5px 20px; 
-    
-    
-  }
-}
-
 
 
 
