@@ -45,6 +45,17 @@ body{
 }
 
 
+@media (max-width: 767px) {
+  .niftycontainer {   
+    display: flex;    
+    padding: 5px 20px; 
+    
+    
+  }
+}
+
+
+
 
 
 
