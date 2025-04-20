@@ -40,6 +40,8 @@ body{
     justify-content: center;    
     color: black;
     margin-top: 100px;
+    margin-left: 10px;
+    margin-right: 10px;
   }
 }
 
