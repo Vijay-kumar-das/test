@@ -6,8 +6,7 @@ body{
 
 
 .niftycontainer {
-  display: flex;
-  flex-direction: column;
+  display: flex;  
   align-items: center;
   justify-content: center;
   margin-left: 200px;
@@ -29,4 +28,7 @@ body{
 
 .niftyarticle h2{
   padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
