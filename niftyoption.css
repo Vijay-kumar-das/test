@@ -45,6 +45,16 @@ body{
 }
 
 
+@media (max-width: 767px) {
+.niftyarticle p {   
+    display: flex;    
+    padding: 20px 20px; 
+   
+    
+  }
+}
+
+
 
 
 
