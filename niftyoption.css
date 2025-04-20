@@ -36,9 +36,9 @@ body{
 @media (max-width: 767px) {
   .nifti {   
      display: flex;
-     padding: 5px 10px;
-     color:#ac9696;
+     padding: 10px 10px;     
      font-weight: 100;
+     margin-top: 100px;
   }
 }
 
