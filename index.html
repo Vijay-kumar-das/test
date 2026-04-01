@@ -1,899 +1,706 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>bankniftyOption</title>
-    <link rel="stylesheet" href="styles.css">       
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="text-typing.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green: #3B6E52; --green-l: #4E8A68; --green-pale: #E8F2EC; --green-mid: #C5DDD0;
+  --orange: #E8813A; --red: #E05252; --amber: #E8A030;
+  --text: #1A2420; --text-mid: #4A5754; --muted: #8FA49C;
+  --bg: #F7F9F8; --white: #FFFFFF; --border: #DDE8E3;
+  --radius: 14px; --shadow: 0 2px 20px rgba(59,110,82,0.08);
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+body{background:#E8EDE9;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;font-family:'Inter',sans-serif;padding:20px 16px 40px;}
 
-	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9209047105837245"
-    	 crossorigin="anonymous"></script>
-    
+.phone{width:100%;max-width:375px;background:var(--bg);border-radius:36px;border:1px solid rgba(0,0,0,0.08);overflow:hidden;min-height:780px;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.18);}
+.screen{display:none;flex-direction:column;min-height:780px;animation:sIn .3s ease forwards;}
+.screen.active{display:flex;}
+.screen.back{animation:sBack .3s ease forwards;}
+@keyframes sIn{from{opacity:0;transform:translateX(22px)}to{opacity:1;transform:translateX(0)}}
+@keyframes sBack{from{opacity:0;transform:translateX(-22px)}to{opacity:1;transform:translateX(0)}}
+
+/* TOPBAR */
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:15px 20px 12px;background:var(--white);border-bottom:1px solid var(--border);}
+.logo{display:flex;align-items:center;gap:7px;}
+.logo-icon{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#E8813A 40%,#3B6E52 100%);display:flex;align-items:center;justify-content:center;font-size:13px;}
+.logo-text{font-weight:700;font-size:16px;color:var(--text);letter-spacing:.02em;}
+.back-btn{display:flex;align-items:center;gap:3px;background:none;border:none;cursor:pointer;font-size:13px;color:var(--text-mid);font-family:'Inter',sans-serif;padding:4px;}
+.back-btn:hover{color:var(--green);}
+.topbar-right{font-size:12px;color:var(--muted);}
+
+/* CTA */
+.cta{padding:14px 22px 30px;background:var(--white);border-top:1px solid var(--border);}
+.btn-main{width:100%;padding:15px;background:var(--green);color:#fff;border:none;border-radius:30px;font-family:'Inter',sans-serif;font-size:15px;font-weight:600;cursor:pointer;transition:background .15s,transform .1s;}
+.btn-main:hover{background:var(--green-l);}
+.btn-main:active{transform:scale(0.98);}
+.btn-ghost{width:100%;padding:13px;background:none;color:var(--green);border:1.5px solid var(--green-mid);border-radius:30px;font-family:'Inter',sans-serif;font-size:14px;font-weight:500;cursor:pointer;margin-top:10px;transition:background .15s;}
+.btn-ghost:hover{background:var(--green-pale);}
+
+.screen-h{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:var(--text);line-height:1.25;margin-bottom:6px;}
+.screen-sub{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:20px;}
+
+/* ══════════════════════════════════
+   SCREEN 10 — MEAL INPUT
+══════════════════════════════════ */
+.s10-body{flex:1;background:var(--white);padding:22px 22px 0;overflow-y:auto;}
+.meal-search-wrap{position:relative;margin-bottom:20px;}
+.meal-search{width:100%;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--radius);padding:14px 50px 14px 46px;font-family:'Inter',sans-serif;font-size:15px;color:var(--text);outline:none;transition:border-color .2s;}
+.meal-search:focus{border-color:var(--green);}
+.meal-search::placeholder{color:var(--muted);}
+.search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:16px;pointer-events:none;}
+.search-clear{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:14px;color:var(--muted);cursor:pointer;background:none;border:none;}
+
+/* Input mode tabs */
+.input-tabs{display:flex;gap:8px;margin-bottom:20px;}
+.itab{flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;background:var(--bg);border:1.5px solid var(--border);border-radius:12px;padding:12px 8px;cursor:pointer;transition:all .2s;}
+.itab.active{border-color:var(--green);background:var(--green-pale);}
+.itab-icon{font-size:22px;}
+.itab-lbl{font-size:11px;font-weight:500;color:var(--muted);}
+.itab.active .itab-lbl{color:var(--green);}
+
+/* Popular meals */
+.section-label{font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.07em;text-transform:uppercase;margin-bottom:12px;}
+.meal-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;}
+.meal-chip{padding:8px 14px;background:var(--bg);border:1.5px solid var(--border);border-radius:30px;font-size:13px;color:var(--text-mid);cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px;}
+.meal-chip:hover{border-color:var(--green);color:var(--green);background:var(--green-pale);}
+.meal-chip.sel{border-color:var(--green);color:var(--green);background:var(--green-pale);font-weight:500;}
+
+/* Recent meals list */
+.recent-item{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid var(--border);cursor:pointer;}
+.recent-item:last-child{border-bottom:none;}
+.recent-icon{width:42px;height:42px;border-radius:10px;background:var(--green-pale);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.recent-info{flex:1;}
+.recent-name{font-size:14px;font-weight:500;color:var(--text);margin-bottom:2px;}
+.recent-meta{font-size:12px;color:var(--muted);}
+.spike-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+
+/* Voice input area */
+.voice-area{display:none;align-items:center;justify-content:center;flex-direction:column;gap:12px;padding:24px 0;}
+.voice-btn{width:72px;height:72px;border-radius:50%;background:var(--green);border:none;font-size:28px;cursor:pointer;box-shadow:0 4px 20px rgba(59,110,82,0.3);transition:transform .15s;}
+.voice-btn:active{transform:scale(0.93);}
+.voice-hint{font-size:13px;color:var(--muted);text-align:center;}
+
+/* Photo area */
+.photo-area{display:none;background:var(--bg);border:2px dashed var(--green-mid);border-radius:var(--radius);padding:28px;text-align:center;cursor:pointer;margin-bottom:16px;}
+.photo-area:hover{border-color:var(--green);background:var(--green-pale);}
+.photo-icon{font-size:36px;margin-bottom:8px;}
+.photo-text{font-size:14px;color:var(--muted);}
+
+
+/* ══════════════════════════════════
+   SCREEN 11 — INGREDIENT BREAKDOWN
+══════════════════════════════════ */
+.s11-body{flex:1;background:var(--white);overflow-y:auto;}
+.meal-hero{background:linear-gradient(135deg,var(--green-pale),var(--green-mid));padding:20px 22px 16px;display:flex;align-items:center;gap:14px;}
+.meal-hero-icon{width:58px;height:58px;border-radius:14px;background:var(--white);display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 2px 12px rgba(59,110,82,0.12);}
+.meal-hero-info h3{font-size:18px;font-weight:700;color:var(--text);margin-bottom:3px;}
+.meal-hero-info p{font-size:12px;color:var(--text-mid);}
+.gl-badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;margin-top:5px;}
+
+.ingr-section{padding:18px 22px 0;}
+.ingr-item{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:10px;}
+.ingr-top{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.ingr-icon{font-size:20px;width:32px;text-align:center;}
+.ingr-name{font-size:14px;font-weight:600;color:var(--text);flex:1;}
+.ingr-gl{font-size:12px;font-weight:600;padding:2px 8px;border-radius:20px;}
+.gl-low{background:#DCFCE7;color:#16A34A;}
+.gl-med{background:#FEF9C3;color:#CA8A04;}
+.gl-high{background:#FEE2E2;color:#DC2626;}
+.ingr-impact{font-size:11px;color:var(--muted);margin-bottom:8px;}
+
+/* Portion slider */
+.portion-row{display:flex;align-items:center;gap:10px;}
+.portion-lbl{font-size:11px;color:var(--muted);white-space:nowrap;}
+.portion-slider{flex:1;-webkit-appearance:none;height:4px;border-radius:4px;background:var(--green-mid);outline:none;cursor:pointer;}
+.portion-slider::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--green);border:2px solid #fff;box-shadow:0 1px 6px rgba(59,110,82,0.3);cursor:pointer;}
+.portion-val{font-size:13px;font-weight:600;color:var(--green);min-width:32px;text-align:right;}
+
+/* Totals bar */
+.totals-bar{margin:16px 22px;background:var(--green-pale);border:1px solid var(--green-mid);border-radius:var(--radius);padding:14px 16px;display:flex;gap:0;}
+.total-item{flex:1;text-align:center;border-right:1px solid var(--green-mid);}
+.total-item:last-child{border-right:none;}
+.total-val{font-size:17px;font-weight:700;color:var(--green);}
+.total-lbl{font-size:10px;color:var(--muted);margin-top:2px;}
+
+/* add ingredient */
+.add-ingr{display:flex;align-items:center;gap:8px;padding:13px 22px;cursor:pointer;color:var(--green);font-size:14px;font-weight:500;border-top:1px solid var(--border);}
+.add-ingr:hover{background:var(--green-pale);}
+
+
+/* ══════════════════════════════════
+   SCREEN 12 — PREDICTION
+══════════════════════════════════ */
+.s12-body{flex:1;background:var(--white);overflow-y:auto;}
+
+/* Spike section */
+.spike-section{padding:20px 22px 0;}
+.spike-label-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
+.spike-main-label{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--text);}
+.spike-sub-label{font-size:12px;color:var(--muted);}
+.spike-for-you{font-size:11px;font-weight:600;color:var(--green);letter-spacing:.05em;text-transform:uppercase;}
+
+/* The actual spike chart */
+.spike-chart{background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:16px 14px 10px;margin-bottom:14px;position:relative;}
+.spike-svg{width:100%;height:140px;}
+.spike-legend{display:flex;gap:16px;justify-content:center;margin-top:6px;}
+.leg-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--muted);}
+.leg-dot{width:8px;height:8px;border-radius:50%;}
+
+/* Risk badge */
+.risk-badge-wrap{display:flex;align-items:center;gap:10px;padding:14px 16px;border-radius:var(--radius);margin-bottom:16px;border:1px solid;}
+.risk-badge-icon{font-size:28px;}
+.risk-badge-info h4{font-size:15px;font-weight:700;margin-bottom:2px;}
+.risk-badge-info p{font-size:12px;line-height:1.5;}
+.risk-high{background:#FEF2F2;border-color:#FECACA;}
+.risk-high h4{color:#DC2626;}
+.risk-high p{color:#B91C1C;}
+.risk-med{background:#FFFBEB;border-color:#FDE68A;}
+.risk-med h4{color:#D97706;}
+.risk-med p{color:#B45309;}
+.risk-low{background:#F0FDF4;border-color:#BBF7D0;}
+.risk-low h4{color:#16A34A;}
+.risk-low p{color:#15803D;}
+
+/* KVP breakdown */
+.kvp-row{display:flex;gap:8px;margin-bottom:16px;}
+.kvp-pill{flex:1;background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:10px;text-align:center;}
+.kvp-name{font-size:10px;font-weight:600;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;margin-bottom:5px;}
+.kvp-bar-wrap{height:4px;background:var(--border);border-radius:4px;overflow:hidden;margin-bottom:5px;}
+.kvp-bar{height:100%;border-radius:4px;transition:width 1s ease;}
+.kvp-val{font-size:12px;font-weight:700;}
+
+/* Suggestions */
+.swap-section{padding:0 22px 16px;}
+.swap-header{display:flex;align-items:center;gap:8px;margin-bottom:12px;}
+.swap-icon{font-size:18px;}
+.swap-title{font-size:15px;font-weight:700;color:var(--text);}
+.swap-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;display:flex;align-items:center;gap:12px;margin-bottom:10px;}
+.swap-from{flex:1;text-align:center;}
+.swap-from .food{font-size:22px;margin-bottom:3px;}
+.swap-from .name{font-size:12px;color:var(--muted);}
+.swap-from .impact{font-size:10px;font-weight:600;padding:2px 8px;border-radius:20px;margin-top:3px;display:inline-block;}
+.swap-arrow{font-size:18px;color:var(--green);}
+.swap-to{flex:1;text-align:center;}
+.swap-to .food{font-size:22px;margin-bottom:3px;}
+.swap-to .name{font-size:12px;color:var(--green);font-weight:500;}
+.swap-to .impact{font-size:10px;font-weight:600;padding:2px 8px;border-radius:20px;margin-top:3px;display:inline-block;background:#DCFCE7;color:#16A34A;}
+.swap-benefit{font-size:11px;color:var(--muted);text-align:right;margin-top:4px;}
+
+/* Timing tip */
+.timing-card{background:linear-gradient(135deg,var(--green-pale),rgba(59,110,82,0.06));border:1px solid var(--green-mid);border-radius:var(--radius);padding:14px 16px;margin:0 22px 16px;display:flex;gap:12px;align-items:flex-start;}
+.timing-icon{font-size:22px;margin-top:2px;}
+.timing-text h5{font-size:13px;font-weight:600;color:var(--green);margin-bottom:3px;}
+.timing-text p{font-size:12px;color:var(--text-mid);line-height:1.5;}
+
+/* Animate spike draw */
+@keyframes drawSpike{from{stroke-dashoffset:600}to{stroke-dashoffset:0}}
+.animated-spike{stroke-dasharray:600;stroke-dashoffset:600;}
+.screen.active .animated-spike{animation:drawSpike 1.4s ease forwards;}
+.screen.active .animated-spike.delay{animation-delay:.3s;}
+
+/* Portion update */
+.ingr-item.updated{border-color:var(--green);background:rgba(232,242,236,0.5);}
+</style>
 </head>
-
 <body>
+<div class="phone">
 
-    <!-- NavBar begins -->
+<!-- ══ SCREEN 10: MEAL INPUT ══ -->
+<div class="screen active" id="s10">
+  <div class="topbar">
+    <div class="logo"><div class="logo-icon">🌿</div><span class="logo-text">B-SURE</span></div>
+    <span class="topbar-right">Hi, Ravi 👋</span>
+  </div>
+  <div class="s10-body">
+    <h2 class="screen-h" style="margin-bottom:4px">Predict My Meal</h2>
+    <p class="screen-sub">Tell us what you're about to eat</p>
 
-   <nav>
-        <input id="nav-toggle" type="checkbox">
-        <div class="logo"> 
-          <a href="index"><span style="color: #1abc9c;">Bank</span><strong>nifty</strong></a></div>
+    <!-- Search -->
+    <div class="meal-search-wrap">
+      <span class="search-icon">🔍</span>
+      <input class="meal-search" id="meal-search" type="text" placeholder="Type a dish or ingredient...">
+      <button class="search-clear" onclick="clearSearch()">✕</button>
+    </div>
+
+    <!-- Input mode tabs -->
+    <div class="input-tabs">
+      <div class="itab active" id="tab-type" onclick="switchTab('type')">
+        <span class="itab-icon">⌨️</span>
+        <span class="itab-lbl">Type</span>
+      </div>
+      <div class="itab" id="tab-photo" onclick="switchTab('photo')">
+        <span class="itab-icon">📷</span>
+        <span class="itab-lbl">Photo</span>
+      </div>
+      <div class="itab" id="tab-voice" onclick="switchTab('voice')">
+        <span class="itab-icon">🎙️</span>
+        <span class="itab-lbl">Voice</span>
+      </div>
+    </div>
+
+    <!-- Type view -->
+    <div id="view-type">
+      <div class="section-label">Popular Indian Meals</div>
+      <div class="meal-chips">
+        <div class="meal-chip" onclick="selectMeal(this,'Dal Chawal')">🍛 Dal Chawal</div>
+        <div class="meal-chip" onclick="selectMeal(this,'Idli Sambar')">🫓 Idli Sambar</div>
+        <div class="meal-chip" onclick="selectMeal(this,'Chicken Biryani')">🍚 Chicken Biryani</div>
+        <div class="meal-chip" onclick="selectMeal(this,'Roti Sabzi')">🫓 Roti Sabzi</div>
+        <div class="meal-chip" onclick="selectMeal(this,'Poha')">🥣 Poha</div>
+        <div class="meal-chip" onclick="selectMeal(this,'Masala Dosa')">🥞 Masala Dosa</div>
+        <div class="meal-chip" onclick="selectMeal(this,'Chole Bhature')">🍞 Chole Bhature</div>
+        <div class="meal-chip" onclick="selectMeal(this,'Upma')">🥣 Upma</div>
+      </div>
+
+      <div class="section-label">Recently Logged</div>
+      <div class="recent-item" onclick="selectRecent('Rajma Rice')">
+        <div class="recent-icon">🍛</div>
+        <div class="recent-info">
+          <div class="recent-name">Rajma Rice</div>
+          <div class="recent-meta">Yesterday · Lunch · 1 serving</div>
         </div>
-        <ul class="links">
-            <li><a href="./index">Daily Analysis</a></li>           
-            <li><a href="./strategy">Strategy</a></li>    
-            <li><a href="./past-analysis">Past Analysis</a></li>      
-            <li><a href="./contact-us">Contact us</a></li>
-            <div class="animation start-home"></div>
-        </ul>
-        <label for="nav-toggle" class="icon-burger">
-            <div class="line"></div>
-            <div class="line"></div>
-            <div class="line"></div>
-        </label>
-    </nav>
-    
-      <!-- NavBar ends -->
-
-
-    <main>
-
-        <!-- heading letter animation -->
-
-        <div class="wrapper">
-            <div class="static-txt">Bank</div>
-            <ul class="dynamic-txts">
-                <li><span>Nifty</span></li>
-                <li><span>Option</span></li>
-                <li><span>Daily</span></li>
-                <li><span>Analysis</span></li>
-            </ul>
+        <div class="spike-dot" style="background:#E05252"></div>
+      </div>
+      <div class="recent-item" onclick="selectRecent('Oats Upma')">
+        <div class="recent-icon">🥣</div>
+        <div class="recent-info">
+          <div class="recent-name">Oats Upma</div>
+          <div class="recent-meta">2 days ago · Breakfast · 1 serving</div>
         </div>
-
-          <!-- Hero section  -->
-
-        <section class="hero">
-
-		<!--  4th Nov  -->
-
-            
-            <h1>BankNifty Analysis for  - 4th Nov 2024</h1>
-
-            <div class="chart">
-
-		    
-          <img src="./charts/4-Nov.png" alt="">
-            </div>
-           <p class="previous">
-           Last day Open - 51,550 <br>
-	   Last day High - 51,825 <br>
-	   Last day Low  - 51,459 <br>
-	   Last day close - 51,475 <br>
-	   
-          
-           </p>
-
-         
-           <p class="resistance">
-	     CE: <br>  
-            If Breaks: 51,804 <br>   
-	   </p>
-		
-           <h4> Resistance level: 51,860 > 51,901 > 51,941 > 51,969 > 52,003 > 52,029 > 52,104 > 52,158 > 52,197 > 52,251 > 52,284 > 52,298 > 52,346 > 52.404 > 52,499 >
-                    52,534 > 52,604 </h4>
-
-          
-
-           <p class="ldl">
-	    PE: <br> 
-            Last Day Low : 51,459  <br>       
-            If Breaks : 51,590   <br>  
-	   </p>      
-		
-            <h5>
-            Support level: 51,559 > 51,492 > 51,447 > 51,374 > 51,395 > 51,244 > 51,180 > 51,098 > 51,003 > 50,898 
-	    </h5>
-
-           <h3>
-            Note: If gap-up or gap-down opening more than 200 points then wait and  monitor all the component Banks and follow chart movement for right trade entry.
-           </h3>	
-
-	 <!-- 4th Nov  -->
-
-	<!--  30th  Oct  -->
-
-            
-            <h1>BankNifty Analysis for  - 30th Oct 2024</h1>
-
-            <div class="chart">
-
-		    
-          <img src="./charts/30-Oct.png" alt="">
-            </div>
-           <p class="previous">
-           Last day Open - 51,404 <br>
-	   Last day High - 52,354 <br>
-	   Last day Low  - 51,278 <br>
-	   Last day close - 52320 <br>
-	   
-          
-           </p>
-
-         
-           <p class="resistance">
-	     CE: <br>  
-            If Breaks: 52,356 <br>   
-	   </p>
-		
-           <h4> Resistance level: 52,505 > 52,613 > 52,709 > 52,804 > 52,852 > 52,900 > 52,984 > 53,032 </h4>
-
-          
-
-           <p class="ldl">
-	    PE: <br> 
-            Last Day Low : 51,278  <br>       
-            If Breaks : 52,198    <br>  
-	   </p>      
-		
-            <h5>
-            Support level: 52,141 > 52,104 > 52,002 > 51,950 > 51,913 > 51,865 > 51,805 > 51,745 > 51,696 > 51,650 > 51,605 > 51,551 > 51,513 > 51,408
-	    </h5>
-
-           <h3>
-            Note: If gap-up or gap-down opening more than 200 points then wait and  monitor all the component Banks and follow chart movement for right trade entry.
-           </h3>	
-
-	 <!-- 30th Oct  -->
-
-	<!--  29th  Oct  -->
-
-            
-            <h1>BankNifty Analysis for  - 29th Oct 2024</h1>
-
-            <div class="chart">
-
-		    
-          <img src="./charts/29-Oct.png" alt="">
-            </div>
-           <p class="previous">
-           Previous close =   51,259 <br>
-           Last Day High  =  51,589
-           </p>
-
-         
-           <p class="resistance">
-            If Breaks: 51,365 <br>   
-	   </p>
-		
-           <h4> Resistance level: 51,401 > 51,430 > 51,470 > 51,498 / 51,506 > 51,549 > 51,602 > 51,660 > 51,703 > 51,731 > 51,764 > 51,808 > 51,889 > 51,940 > 52,035 </h4>
-
-          
-
-           <p class="ldl">
-            Last Day Low : 51,012 <br>       
-            If Breaks : 51,200   <br>  
-	   </p>      
-		
-            <h5>
-            Support level: 51,095 > 51,061 > 50,998 > 50,903 > 50,863 > 50,794 > 50,749 > 50,696 > 50,652
-	    </h5>
-
-           <h3>
-            Note: If gap-up or gap-down opening more than 200 points then wait and  monitor all the component Banks and follow chart movement for right trade entry.
-           </h3>	
-
-	 <!-- 29th Oct  -->
-
-
-	<!--  28th  Oct  -->
-
-            
-            <h1>BankNifty Analysis for  - 28th Oct 2024</h1>
-
-            <div class="chart">
-
-		    
-          <img src="./charts/28-Oct.png" alt="">
-            </div>
-           <p class="previous">
-           Previous close =   50,787 <br>
-           Last Day High  =  51,501
-           </p>
-
-         
-           <p class="resistance">
-            If Breaks: 50,950 <br>    </p>
-           <h4> Resistance level: 51,081 > 51,126 > 51,183 > 51,257 > 51,303 > 51,371 > 51,422 > 51,471 > 51,504 > 51,504 > 51,593 > 51,675 > 51,707 > 51,722 > 51,810 </h4>
-
-          
-
-           <p class="ldl">
-            Last Day Low : 50,382 <br>       
-            If Breaks : 50,800   <br>   </p>      
-            <h5>
-            Support level: 50,747 > 50,706 > 50,662 > 50,595 > 50,529 > 50,470
-           
-
-           <h3>
-            Note: If gap-up or gap-down opening more than 200 points then wait and  monitor all the component Banks and follow chart movement for right trade entry.
-           </h3>	
-
-	 <!-- 28th Oct  -->
-
-	<!--  25th  Oct  -->
-
-            
-            <h1>BankNifty Analysis for  - 25th Oct 2024</h1>
-
-            <div class="chart">
-
-		    
-          <img src="./charts/25-Oct.png" alt="">
-            </div>
-           <p class="previous">
-           Previous close =   51,531 <br>
-           Last Day High  =  51,781
-           </p>
-
-         
-           <p class="resistance">
-            If Breaks: 51,624 <br>    </p>
-           <h4> Resistance level:  51,668 > 51,698 > 51,750 > 51,771 > 51,801 > 51,853 > 51,897 > 51,942 > 51,974 > 52,002 > 52,037 > 52,095 > 52,115 > 52,143 > 52,176 > 52,221
-                    52,266 > 52,301 </h4>
-
-          
-
-           <p class="ldl">
-            Last Day Low : 51,201 <br>       
-            If Breaks : 51,495   <br>   </p>      
-            <h5>
-            Support level:  51,479 > 51,430 > 51,402 > 51,369 > 51,348 > 51,324 > 51,298 > 51,105 > 50,846 > 50,766 > 50,617 > 50,401
-           
-
-           <h3>
-            Note: If gap-up or gap-down opening more than 200 points then wait and  monitor all the component Banks and follow chart movement for right trade entry.
-           </h3>	
-
-	 <!-- 25th Oct  -->
-
-	
-	<!--  24th  Oct  -->
-
-            
-            <h1>BankNifty Analysis for  - 24th Oct 2024</h1>
-
-            <div class="chart">
-
-		    
-          <img src="./charts/24-Oct.png" alt="">
-            </div>
-           <p class="previous">
-           Previous close =   51,257 <br>
-           Last Day High  =  52,257
-           </p>
-
-         
-           <p class="resistance">
-            If Breaks: 51,351 <br>    </p>
-           <h4> Resistance level:  51,408 > 51,481 > 51,501 > 51,558 > 51,599 > 51,631 > 51,679 > 51,736 > 51,773 > 51,802 > 51,852 > 51,878 > 51,912 > 51,953 > 52,005/26
-					52,071 > 52,099 > 52,156 > 52,215 > 52,268 </h4>
-
-          
-
-           <p class="ldl">
-            Last Day Low : 51,179 <br>       
-            If Breaks : 51,200   <br>   </p>      
-            <h5>
-            Support level: 51,106 > 51,068 > 51,002 > 50,954 > 50,896 > 50,820 > 50,768 > 50,702 > 50,602
-           
-
-           <h3>
-            Note: If gap-up or gap-down opening more than 200 points then wait and  monitor all the component Banks and follow chart movement for right trade entry.
-           </h3>	
-
-	 <!-- 24th Oct  -->
-
-
-	<!--  23rd  Oct  -->
-
-            
-            <h1>BankNifty Analysis for  - 23rd Oct 2024</h1>
-
-            <div class="chart">
-
-		    
-          <img src="./charts/23-Oct.png" alt="">
-            </div>
-           <p class="previous">
-           Previous close =   51,257 <br>
-           Last Day High  =  52,257
-           </p>
-
-         
-           <p class="resistance">
-            If Breaks: 51,351 <br>    </p>
-           <h4> Resistance level:  51,408 > 51,481 > 51,501 > 51,558 > 51,599 > 51,631 > 51,679 > 51,736 > 51,773 > 51,802 > 51,852 > 51,878 > 51,912 > 51,953 > 52,005/26
-					52,071 > 52,099 > 52,156 > 52,215 > 52,268 </h4>
-
-          
-
-           <p class="ldl">
-            Last Day Low : 51,179 <br>       
-            If Breaks : 51,200   <br>   </p>      
-            <h5>
-            Support level: 51,106 > 51,068 > 51,002 > 50,954 > 50,896 > 50,820 > 50,768 > 50,702 > 50,602
-           
-
-           <h3>
-            Note: If gap-up or gap-down opening more than 200 points then wait and  monitor all the component Banks and follow chart movement for right trade entry.
-           </h3>	
-
-	 <!-- 23rd Oct  -->
-
-	<!--  22nd  Oct  -->
-
-            
-            <h1>BankNifty Analysis for  - 22nd Oct 2024</h1>
-
-            <div class="chart">
-
-		    
-          <img src="./charts/22-Oct.png" alt="">
-            </div>
-           <p class="previous">
-           Previous close =   51962.70 <br>
-           Last Day High  =  52,577
-           </p>
-
-         
-           <p class="resistance">
-            If Breaks: 51,930 <br>    </p>
-           <h4> Resistance level:  51,976 > 52,028 > 52,065 > 52,110 > 52,128 > 52,174 > 52,206 > 52,229 > 52,304 > 52,361 > 52,398 > 52,441 > 52,522 > 52,614 > 52,726
-                                   52,788 > 52,849 > 52,930 > 53,004 </h4>
-
-          
-
-           <p class="ldl">
-            Last Day Low : 51,855 <br>       
-            If Breaks : 51,800  <br>   </p>      
-            <h5>
-            Support level: 51,766 > 51,738 > 51,695 > 51,668 > 51,633 > 51,601 > 51,558 > 51,528 > 51,494 > 51,403
-           
-
-           <h3>
-            Note: If gap-up or gap-down opening more than 200 points then wait and  monitor all the component Banks and follow chart movement for right trade entry.
-           </h3>	
-
-	 <!-- 22nd Oct  -->
-
-	<!--  21st  Oct  -->
-
-            
-            <h1>BankNifty Analysis for  - 21st Oct 2024</h1>
-
-            <div class="chart">
-
-		    
-          <img src="./charts/21st-Oct.png" alt="">
-            </div>
-           <p class="previous">
-           Previous close =   52,094.20 <br>
-           Last Day High  =  52,199
-           </p>
-
-         
-           <p class="resistance">
-            If Breaks: 52,200 <br>    </p>
-           <h4> Resistance level:  52,255 > 52,288 > 52,324 > 52,353 > 52,402 > 52,441 > 52,515 > 52,614 > 52,670 > 52,726 > 52,769 > 52,837 > 52,930 > 52,979 > 53,035 </h4>
-
-          
-
-           <p class="ldl">
-            Last Day Low :  51,000 <br>       
-            If Breaks : 52,100 <br>   </p>      
-            <h5>
-            Support level: 52,066 > 52,026 > 51,978 > 51,919 > 51,901 > 51,872 > 51,849 > 51,801
-           
-
-           <h3>
-            Note: If gap-up or gap-down opening more than 200 points then wait and  monitor all the component Banks and follow chart movement for right trade entry.
-           </h3>	
-
-	 <!-- 21st Oct  -->
-
-	 <!--  18th Oct  -->
-
-            
-            <h1>BankNifty Analysis for  - 18th Oct 2024</h1>
-
-            <div class="chart">
-
-		    
-          <img src="./charts/18th-Oct.png" alt="">
-            </div>
-           <p class="previous">
-           Previous close =   51,288 <br>
-           Last Day High  =  51,930
-           </p>
-
-         
-           <p class="resistance">
-            If Breaks: 51,361 <br>    </p>
-           <h4> Resistance level:  51,409 > 51,451 > 51,482 > 51,542 > 51,585 > 51,613 > 51,634 > 51,652 > 51,685 > 51,731 > 51,769 > 51,820 > 51,839 > 51,881 > 51,919 > 51,959 > 52,026 > 52,082 > 52,118 > 52,190 > 52,210 > 52,229 </h4>
-
-          
-
-           <p class="ldl">
-            Last Day Low : 51,150 <br>       
-            If Breaks : 51,043 <br>   </p>      
-            <h5>
-            Support level: 50,926 > 50,805 > 50,701 > 50,609 > 50,400 > 50,317 > 50,200
-           
-
-           <h3>
-            Note: If gap-up or gap-down opening more than 200 points then wait and  monitor all the component Banks and follow chart movement for right trade entry.
-           </h3>	
-
-	 <!-- 18th Oct  -->
-
-	 <!--  17th Oct  -->
-
-            
-            <h1>BankNifty Analysis for  - 17th Oct 2024</h1>
-
-            <div class="chart">
-          <img src="./charts/17th-Oct.png" alt="">
-            </div>
-           <p class="previous">
-           Previous close =   51,796 <br>
-           Last Day High  =   52,031
-           </p>
-
-         
-           <p class="resistance">
-            If Breaks: 51,851  <br>    </p>
-           <h4> Resistance level:  51,906 > 51,634 > 51,955 > 51,992 > 52,027 > 52,082 > 52,114 > 52,201 > 52,283 > 52,357 > 52,407 > 52,512 > 52,604 </h4>
-
-          
-
-           <p class="ldl">
-            Last Day Low :51,711 <br>       
-            If Breaks : 51,700  <br>   </p>      
-            <h5>
-            Support level: 51,653 > 51,598 > 51,537 > 51,512 > 51,497 > 51,451 > 51,425 > 51,401 > 51,374 > 51,344 > 51,301 > 51,248 > 51,215
-           
-
-           <h3>
-            Note: If gap-up or gap-down opening more than 200 points then wait and  monitor all the component Banks and follow chart movement for right trade entry.
-           </h3>	
-
-	 <!-- 17th Oct  -->
-
-
-	 <!--  10th Oct  -->
-
-            
-            <h1>BankNifty Analysis for  - 10th Oct 2024</h1>
-
-            <div class="chart">
-          <img src="./charts/10th-Oct.png" alt="">
-            </div>
-           <p class="previous">
-           Previous close =  51,007 <br>
-           Last Day High  =   51,707
-           </p>
-
-         
-           <p class="resistance">
-            If Breaks: 51,172  <br>    </p>
-           <h4> Resistance level: 51,207 > 51,276 > 51,307 > 51,341 > 51,382 > 51,413 > 51,460 > 51,504 > 51,545 > 51,598 > 51,661 > 51,714 > 51,802 </h4>
-
-          
-
-           <p class="ldl">
-            Last Day Low : 50,903  <br>       
-            If Breaks : 50,903  <br>   </p>      
-            <h5>
-            Support level: 50,781 > 50,706 > 50,627 > 50,584 > 50,499 > 50,452 > 50,399 > 50,302 > 50,202
-           
-
-           <h3>
-            Note: If gap-up or gap-down opening more than 200 points then wait and  monitor all the component Banks and follow chart movement for right trade entry.
-           </h3>	
-
-	 <!-- 10th Oct  -->
-		    
-
-	 <!--  9th Oct  -->
-
-            
-            <h1>BankNifty Analysis for  - 9th Oct 2024</h1>
-
-            <div class="chart">
-           <img src="./charts/9th-Oct.png" alt="">
-            </div>
-           <p class="previous">
-           Previous close =   51,021 <br>
-           Last Day High  =  51,176
-           </p>
-
-         
-           <p class="resistance">
-            If Breaks:51,154 <br>    </p>
-           <h4> Resistance level: 51,216 > 51,257 > 51,304 > 51,338 > 51,382 > 51,457 > 51,504 > 51,570 > 51,601 > 51,636 > 51,676 > 51,708 > 51,774 > 51,805 > 51,849 > 51,889 > 51,941 > 52,005 </h4>
-
-          
-
-           <p class="ldl">
-            Last Day Low : 50,466  <br>       
-            If Breaks : 50,950  <br>   </p>      
-            <h5>
-            Support level: 50,890 > 50,800 > 50,771 > 50,706 > 50,652 > 50,602 > 50,577 > 50,499 > 50,436 > 50,396 > 50,324 > 50,208
-           
-
-           <h3>
-            Note: If gap-up or gap-down opening more than 200 points then wait and  monitor all the component Banks and follow chart movement for right trade entry.
-           </h3>	
-
-	 <!-- 9th Oct  -->
-		
-
-	 <!-- 1st Oct  -->
-
-            
-            <h1>BankNifty Analysis for  - 1st Oct 2024</h1>
-
-            <div class="chart">
-              <img src="./charts/1st-Oct.png" alt="">
-            </div>
-           <p class="previous">
-           Previous close =   52,978 <br>
-           Last Day High  =  53,732
-           </p>
-
-         
-           <p class="resistance">
-            If Breaks: 53,105   <br>    </p>
-           <h4> Resistance level: 53,150.46 > 53,213 > 53,246.45 > 53,288.81 > 53,375 > 53,424.81 > 5,473.86 > 53,518 > 5,578.65 </h4>
-
-          
-
-           <p class="ldl">
-            Last Day Low : 52,929  <br>       
-            If Breaks : 52,848 <br>   
-	   </p>      
-            <h5>
-            Support level:52,790 > 52,715 > 53,670 > 52,598 > 52,470 > 52,399 > 52,347 > 52,253
-           
-
-           <h3>
-            Note: If gap-up or gap-down opening more than 200 points then wait and  monitor all the component Banks and follow chart movement for right trade entry.
-           </h3>	
-
-	 <!-- 1st Oct  -->
-
-
-
-		
-
-
-		 <!-- 30 Sep  -->
-
-            
-            <h1>BankNifty Analysis for  - 30 Sep 2024</h1>
-
-            <div class="chart">
-                <img src="./charts/30-09.png" alt="">
-            </div>
-           <p class="previous">
-           Previous close =  53,834<br>
-           Last Day High  =  54,338.36
-           </p>
-
-         
-           <p class="resistance">
-            If Breaks:  54,322.32    <br>    </p>
-           <h4> Resistance level: 54,033.17/65 > 54,109.65 > 54,147.49 > 54,186.13 > 54,227.31/271 > 54,344.98 > 54,383.22 > 54,442.05 </h4>
-
-          
-
-           <p class="ldl">
-            Last Day Low : 53,763.69   <br>       
-            If Breaks : 53,877  <br>   </p>      
-            <h5>
-            Support level: 53,824.31 > 57,762 > 53,712.53 > 53,683.11 > 53,624.28 > 53,559.56 > 53,536.03 > 53,471.31 > 53,412.48 > 53,306.58 > 53,206 >  53,104.52 > 53,006> 53,932.43
-           
-
-           <h3>
-            Note: If gap-up or gap-down opening more than 200 points then wait and  monitor all the component Banks and follow chart movement for right trade entry.
-           </h3>
-
-		 <!-- 27 Sep  -->
-
-            
-            <h1>BankNifty Analysis for  - 27 Sep 2024</h1>
-
-            <div class="chart">
-                <img src="./charts/27-09.png" alt="">
-            </div>
-           <p class="previous">
-            Previous close =  54,375.35<br>
-            Last Day High  =  54,468.72
-           </p>
-
-         
-           <p class="resistance">
-            If Breaks:  54,322.32    <br>    </p>
-           <h4> Resistance level: 54,345.74 > 54,385.76 > 54,409.18/54,439.44 > > 54,468.72 > 54,480.43 > 54,521.42 > 54,566 > 54,509 > 54,569 </h4>
-
-          
-
-           <p class="ldl">
-            Last Day Low :  54,010.97   <br>       
-            If Breaks : 54,246.09    <br>   </p>      
-            <h5>
-            Support level:  54,212.03/54,200 > 54,186.65 > 54,157.37 > 54,139.80 > 54,117.35 >  54,081/40 > 53,997.30 > 53,943 > 53,889.43 > 53,843 > 
-            53,8017 > 53,792 > 53,703 > 53,656.44 > 53,622.53 > 53,599.05 > 53,562.53 > 53,499.93 > 53,458.19 > 53,432.11/413 >  
-            53,374.11 > 53,301.69 > 53,282.33</h5> 
-           
-
-           <h3>
-            Note: If gap-up or gap-down opening more than 200 points then wait and  monitor all the component Banks and follow chart movement for right traide entry.
-           </h3>
-
-
-		<!-- 26 Sep  -->
-
-            
-             <h1>BankNifty Analysis for  - 26 Sep 2024</h1>
-
-             <div class="chart">
-                 <img src="./charts/26_09.png" alt="">
-             </div>
-            <p class="previous">
-             Previous close =  54,101.65<br>
-             Last Day High  = 54,142
-            </p>
- 
-            <p class="resistance">
-             If Breaks:  54,163.02     <br>  
-             Resistance level: 54,187.41>  54,206 > 54,249 > 54,286 > 54,291 - 54,308 ><br> 54,318 > 54,338 > 54,378 > 54,393/409
-            </p>
-           
- 
-            <p class="ldl">
-             Last Day Low :  53,791.90   <br>       
-             If Breaks : 53,992    <br>          
-             Support level:  53,843 >  53,943 > 53,889.43 > 53,843 >  53,8017 > 53,792 > 53,703 > 53,656.44 > 53,622.53 > 53,599.05 > 53,562.53 > 53,499.93
-             53,458.19 > 53,432.11/413 >  53,374.11 > 53,301.69 > 53,282.33
-            </p>
- 
-            <h3>
-             Note: If gap-up or gap-down opening more than 200 points then wait and  monitor all the component Banks and follow chart movement for right traide entry.
-            </h3>
-
-		<!-- 25 Sep  -->
-
-            
-            <h1>BankNifty Analysis for  - 25 Sep 2024</h1>
-
-            <div class="chart">
-                <img src="./charts/25-09.png" alt="">
-            </div>
-           <p class="previous">
-            Previous close =  53,968.60<br>
-            Last Day High  = 54,246
-           </p>
-
-           <p class="resistance">
-            If Breaks:  54,054.06      <br>  
-            Resistance level: 54,102/135 > 54,159 > 54,206 > 54,249 > 54,286 > 54,291 - 54,308 > 54,318 > 54,338 > 54,378 > 54,393
-           </p>
-          
-
-           <p class="ldl">
-            Last Day Low :  53,942   <br>       
-            If Breaks : 53,900     <br>          
-            Support level:  53,843 >  53,8017 > 53,792 > 53,703 > 53,656.44 > 53,622.53 > 53,599.05 > 53,562.53 > 53,499.93
-            53,458.19 > 53,432.11/413 >  53,374.11 > 53,301.69 > 53,282.33
-           </p>
-
-           <h3>
-            Note: If gap-up or gap-down opening more than 200 points then wait and  monitor all the component Banks and follow chart movement for right traide entry.
-           </h3>
-
-
-             <!-- 24 Sep  -->
-
-		
-            <h1>BankNifty Analysis for  - 24 Sep 2024</h1>
-
-            <div class="chart">
-                <img src="./charts/24_09.png" alt="">
-            </div>
-           <p class="previous">
-            Previous close = 54,076<br>
-            Last Day High  = 54,198
-           </p>
-
-           <p class="resistance">
-            If Breaks:  54,112         <br>  
-            Resistance level: 54,139 > 54,159 > 54,206 > 54,249 > 54,286 > 54,291 - 54,308 > 54,318 > 54,338 > 54,378 > 54,393
-           </p>
-          
-
-           <p class="ldl">
-            Last Day Low :  53,742   <br>       
-            If Breaks : 54,003      <br>          
-            Support level:  53,966.84 > 53,938.15 > 53,891.20 >  53,815.55 > 53,776.42 > <br> 53,742.51 > 53,703 > 53,656.44 > 53,622.53 > 53,599.05 > 53,562.53 > 53,499.93
-            53,458.19 > 53,432.11/413 >  53,374.11 > 53,301.69
-           </p>
-
-           <h3>
-            Note: If gap-up or gap-down opening more than 200 points then wait and  monitor all the component Banks and follow chart movement for right traide entry.
-           </h3>
-
-              
-            <h1>BankNifty Analysis for  - 18th Sep 2024</h1>
-
-            <div class="chart">
-                <img src="./charts/18-Sep.png" alt="">
-            </div>
-           <p class="previous">
-            Previous close = 52,153 <br>
-            Last Day High  = 52,209
-           </p>
-
-           <p class="resistance">
-            If Breaks:  52,200          <br>  
-            Resistance level: 52,218.76 > 52,241.39 > 52,264.03 > 52,313.82 > 52,354.55 >
-            52,390.76 > 52,404.34 / 52,431.50 > 52,476.77 > 52,512.98 > 52,558.24 / 52,585.40 > 52,608.03 > 52,639.72 > 52,666.87 > 52,730.24 > 52,787.56 > 52,803.61 >
-            52,866.81 > 52,940.55
-           </p>
-          
-
-           <p class="ldl">
-            Last Day Low :  51,922.96       <br>       
-            If Breaks : 52,110      <br>          
-            Support level:  52,037.91, > 51,994.12 > 51,952.15/928 > 51,887.41 > 51,848.14 > 51,806.18 > 51,773.64 > 51,744.87 / 51,732.76 / 51,719.13 / 51,703.99 > 51,676.73 / 51,646.13 / 51,637.37 > 51,597.97 > 51,552.57/51,517.75 > 
-            51,490.49 > 51,420.84 / 51,401.16 > 51,361.79 > 51,342.11/51,328.28/51,304.25 > 51,286.08/51,269.43/51,242.17 > 51,201.29 > 51,082/51,066
-           </p>
-
-           <h3>
-            Note: If gap-up or gap-down opening more than 200 points then wait and  monitor all the component Banks and follow chart movement for right traide entry.
-           </h3>
-
-
-             
-            <h1>BankNifty Analysis for  - 17th Sep 2024</h1>
-
-            <div class="chart">
-                <img src="./charts/17-Sep-2024.PNG" alt="">
-            </div>
-           <p class="previous">
-            Previous close = 52,153 <br>
-            Last Day High  = 52,209
-           </p>
-
-           <p class="resistance">
-            If Breaks:  52,200          <br>  
-            Resistance level: 52,218.76 > 52,241.39 > 52,264.03 > 52,313.82 > 52,354.55 >
-            52,390.76 > 52,404.34 / 52,431.50 > 52,476.77 > 52,512.98 > 52,558.24 / 52,585.40 > 52,608.03 > 52,639.72 > 52,666.87 > 52,730.24 > 52,787.56 > 52,803.61 >
-            52,866.81 > 52,940.55
-           </p>
-          
-
-           <p class="ldl">
-            Last Day Low :  51,922.96       <br>       
-            If Breaks : 52,110      <br>          
-            Support level:  52,037.91, > 51,994.12 > 51,952.15/928 > 51,887.41 > 51,848.14 > 51,806.18 > 51,773.64 > 51,744.87 / 51,732.76 / 51,719.13 / 51,703.99 > 51,676.73 / 51,646.13 / 51,637.37 > 51,597.97 > 51,552.57/51,517.75 > 
-            51,490.49 > 51,420.84 / 51,401.16 > 51,361.79 > 51,342.11/51,328.28/51,304.25 > 51,286.08/51,269.43/51,242.17 > 51,201.29 > 51,082/51,066
-           </p>
-
-           <h3>
-            Note: If gap-up or gap-down opening more than 200 points then wait and  monitor all the component Banks and follow chart movement for right traide entry.
-           </h3>
-
-            
-            <h1>BankNifty Analysis for  - 16th Sep 2024</h1>
-
-            <div class="chart">
-                <img src="./charts/16-Sep-2024.PNG" alt="">
-            </div>
-           <p class="previous">
-            Previous close = 51,896 <br>
-            Last Day High  = 51,997.73
-           </p>
-
-           <p class="resistance">
-            If Breaks:  52,087           <br>  
-            Resistance level: 52,132.76 > 52,168.97 > 52,200.66 / 52,218.76 > 52,241.39 > 52,264.03 > 52,313.82 > 52,354.55 ><br>  
-            52,390.76 > 52,404.34 / 52,431.50 > 52,476.77 > 52,512.98 > 52,558.24 / 52,585.40 > 52,608.03 > 52,639.72 > 52,666.87 > 52,730.24 > 52,787.56
-           </p>
-          
-
-           <p class="ldl">
-            Last Day Low : 51,678.75       <br>       
-            If Breaks : 51,800        <br>          
-            Support level: 51,773.64 > 51,744.87 / 51,732.76 / 51,719.13 / 51,703.99 > 51,676.73 / 51,646.13 / 51,637.37 > 51,597.97 > 51,552.57/51,517.75 > <br>
-            51,490.49 > 51,420.84 / 51,401.16 > 51,361.79 > 51,342.11/51,328.28/51,304.25 > 51,286.08/51,269.43/51,242.17 > 51,201.29 > 51,082/51,066
-           </p>
-
-           <h3>
-            Analysis Accuracy : Market touched  CE  Resistance level: 52,132.76 > 52,168.97 > 52,200.66 /<span style="color: rgb(10, 247, 10);">  52,209.43</span> 
-           </h3>
-            
-        </section>
-        
-  
-
-
-
-        
-    </main>
-
-        
-
-    <footer>
-        
-        <div class="footerContainer">    
-            <div class="container">
-                <div class="row">
-                    <div class="footer-col">
-                        <h4>Learning</h4>
-                        <ul>
-                            <li><a href="">Trading</a></li>
-                            <li><a href="">Intraday</a></li>
-                            <li><a href="">Delivery</a></li>
-    
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h4>Investment</h4>
-                        <ul>
-                            <li><a href="./stocks">Stocks</a></li>
-                            <li><a href="./mutual-funds">Mutual Funds</a></li>
-                            <li><a href="">IPO</a></li>
-    
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h4>About us</h4>
-                        <ul>
-                            <li><a href="./about-us">About us</a></li>
-                            <li><a href="./privacy-policy">Privacy Policy</a></li>
-                            <li><a href="./terms-&-conditions">Terms of Use</a></li>
-    
-                        </ul>
-                    </div>
-                    
-                    
-                </div>
-            </div>    	
-            <div class="footerNav">                 
-                
-
-                <div class="socialIcons">
-                    <a href=""><i class="fa-brands fa-facebook"></i></a>
-                    <a href=""><i class="fa-brands fa-twitter"></i></a>
-                    <a href=""><i class="fa-brands fa-square-instagram"></i></a>
-                    <a href=""><i class="fa-brands fa-google-plus"></i></a>
-                </div>
-				
-            </div>       
-            
-        </div>        
-        <div class="footerBottom">
-            <p>© 2024 bankniftyoption.com.  All rights reserved. <span class="designer"></span></p>
+        <div class="spike-dot" style="background:#22C55E"></div>
+      </div>
+      <div class="recent-item" onclick="selectRecent('Paneer Butter Masala')">
+        <div class="recent-icon">🍲</div>
+        <div class="recent-info">
+          <div class="recent-name">Paneer Butter Masala</div>
+          <div class="recent-meta">3 days ago · Dinner · 1.5 serving</div>
         </div>
-    </footer>
+        <div class="spike-dot" style="background:#F59E0B"></div>
+      </div>
+    </div>
+
+    <!-- Photo view -->
+    <div id="view-photo" style="display:none">
+      <div class="photo-area" onclick="alert('Camera/gallery would open here in the native app')">
+        <div class="photo-icon">📷</div>
+        <div class="photo-text">Tap to take a photo or<br>upload from gallery</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:6px">We'll identify the dish and ingredients automatically</div>
+      </div>
+      <div style="text-align:center;font-size:13px;color:var(--muted);margin-top:12px">Supports Indian dishes · Instant recognition</div>
+    </div>
+
+    <!-- Voice view -->
+    <div id="view-voice" style="display:none;flex-direction:column;align-items:center;padding:28px 0;">
+      <button class="voice-btn" onclick="simulateVoice()">🎙️</button>
+      <div class="voice-hint" style="margin-top:14px">Tap and say your meal<br><span style="color:var(--green);font-style:italic">"I had dal chawal with salad"</span></div>
+      <div id="voice-result" style="display:none;margin-top:16px;background:var(--green-pale);border:1px solid var(--green-mid);border-radius:var(--radius);padding:12px 16px;font-size:13px;color:var(--text);text-align:center;width:100%"></div>
+    </div>
+  </div>
+
+  <div class="cta">
+    <button class="btn-main" id="predict-btn" onclick="goTo(11)" style="opacity:.5;pointer-events:none">Analyse Meal →</button>
+  </div>
+</div>
 
 
-    
-    <script type="module" src="scripts.js"></script>
-    
+<!-- ══ SCREEN 11: INGREDIENT BREAKDOWN ══ -->
+<div class="screen" id="s11">
+  <div class="topbar">
+    <button class="back-btn" onclick="goBack(10)">← Edit Meal</button>
+    <div class="logo"><div class="logo-icon">🌿</div><span class="logo-text">B-SURE</span></div>
+    <div style="width:70px"></div>
+  </div>
+
+  <div class="s11-body">
+    <!-- Meal hero -->
+    <div class="meal-hero">
+      <div class="meal-hero-icon" id="s11-icon">🍛</div>
+      <div class="meal-hero-info">
+        <h3 id="s11-name">Dal Chawal</h3>
+        <p>Standard serving · 350g</p>
+        <span class="gl-badge gl-med">Glycaemic Load: Medium</span>
+      </div>
+    </div>
+
+    <!-- Totals -->
+    <div class="totals-bar">
+      <div class="total-item"><div class="total-val" id="tot-gl">38</div><div class="total-lbl">Glycaemic Load</div></div>
+      <div class="total-item"><div class="total-val" id="tot-carb">62g</div><div class="total-lbl">Net Carbs</div></div>
+      <div class="total-item"><div class="total-val" id="tot-spike">64</div><div class="total-lbl">Spike Score</div></div>
+    </div>
+
+    <!-- Ingredients -->
+    <div class="ingr-section">
+      <div class="section-label" style="margin-bottom:10px">Ingredients Detected</div>
+
+      <div class="ingr-item" id="ingr-1">
+        <div class="ingr-top">
+          <span class="ingr-icon">🍚</span>
+          <span class="ingr-name">White Rice</span>
+          <span class="ingr-gl gl-high">GI: 73</span>
+        </div>
+        <div class="ingr-impact">High glycaemic · Primary spike driver</div>
+        <div class="portion-row">
+          <span class="portion-lbl">Portion</span>
+          <input type="range" class="portion-slider" min="0.25" max="2" step="0.25" value="1" oninput="updatePortion(this,'rice-val',1)">
+          <span class="portion-val" id="rice-val">1x</span>
+        </div>
+      </div>
+
+      <div class="ingr-item" id="ingr-2">
+        <div class="ingr-top">
+          <span class="ingr-icon">🫘</span>
+          <span class="ingr-name">Toor Dal</span>
+          <span class="ingr-gl gl-low">GI: 29</span>
+        </div>
+        <div class="ingr-impact">Low glycaemic · High protein, slows absorption</div>
+        <div class="portion-row">
+          <span class="portion-lbl">Portion</span>
+          <input type="range" class="portion-slider" min="0.25" max="2" step="0.25" value="1" oninput="updatePortion(this,'dal-val',1)">
+          <span class="portion-val" id="dal-val">1x</span>
+        </div>
+      </div>
+
+      <div class="ingr-item" id="ingr-3">
+        <div class="ingr-top">
+          <span class="ingr-icon">🧈</span>
+          <span class="ingr-name">Ghee</span>
+          <span class="ingr-gl gl-low">GI: 0</span>
+        </div>
+        <div class="ingr-impact">No sugar impact · May slow digestion</div>
+        <div class="portion-row">
+          <span class="portion-lbl">Portion</span>
+          <input type="range" class="portion-slider" min="0.25" max="2" step="0.25" value="0.5" oninput="updatePortion(this,'ghee-val',0.5)">
+          <span class="portion-val" id="ghee-val">0.5x</span>
+        </div>
+      </div>
+
+      <div class="ingr-item" id="ingr-4">
+        <div class="ingr-top">
+          <span class="ingr-icon">🧅</span>
+          <span class="ingr-name">Onion & Tomato</span>
+          <span class="ingr-gl gl-low">GI: 15</span>
+        </div>
+        <div class="ingr-impact">Low glycaemic · Rich in fibre</div>
+        <div class="portion-row">
+          <span class="portion-lbl">Portion</span>
+          <input type="range" class="portion-slider" min="0.25" max="2" step="0.25" value="1" oninput="updatePortion(this,'ot-val',1)">
+          <span class="portion-val" id="ot-val">1x</span>
+        </div>
+      </div>
+
+      <!-- Add ingredient -->
+      <div class="add-ingr" onclick="alert('Add ingredient → search modal would open')">
+        <span style="font-size:18px">＋</span> Add an ingredient
+      </div>
+    </div>
+  </div>
+
+  <div class="cta">
+    <button class="btn-main" onclick="goTo(12)">Predict My Spike →</button>
+  </div>
+</div>
+
+
+<!-- ══ SCREEN 12: PREDICTION ══ -->
+<div class="screen" id="s12">
+  <div class="topbar">
+    <button class="back-btn" onclick="goBack(11)">← Ingredients</button>
+    <div class="logo"><div class="logo-icon">🌿</div><span class="logo-text">B-SURE</span></div>
+    <button style="background:none;border:none;font-size:13px;color:var(--green);cursor:pointer;font-family:'Inter',sans-serif;font-weight:500" onclick="goTo(13)">Log it →</button>
+  </div>
+
+  <div class="s12-body">
+    <div class="spike-section">
+      <div class="spike-label-row">
+        <span class="spike-main-label" id="s12-meal-name">Dal Chawal</span>
+        <span class="spike-for-you">For Ravi · Pitta</span>
+      </div>
+      <p style="font-size:12px;color:var(--muted);margin-bottom:14px">Expected spike for your body</p>
+
+      <!-- Spike Chart -->
+      <div class="spike-chart">
+        <svg class="spike-svg" viewBox="0 0 320 130" id="spike-svg">
+          <defs>
+            <linearGradient id="spikeGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#E05252" stop-opacity="0.18"/>
+              <stop offset="100%" stop-color="#E05252" stop-opacity="0.01"/>
+            </linearGradient>
+            <linearGradient id="avgGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#94A3B8" stop-opacity="0.1"/>
+              <stop offset="100%" stop-color="#94A3B8" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <!-- Grid lines -->
+          <line x1="30" y1="20" x2="30" y2="110" stroke="#DDE8E3" stroke-width="0.5"/>
+          <line x1="30" y1="20" x2="310" y2="20" stroke="#DDE8E3" stroke-width="0.5" stroke-dasharray="4 4"/>
+          <line x1="30" y1="55" x2="310" y2="55" stroke="#DDE8E3" stroke-width="0.5" stroke-dasharray="4 4"/>
+          <line x1="30" y1="90" x2="310" y2="90" stroke="#DDE8E3" stroke-width="0.5" stroke-dasharray="4 4"/>
+          <line x1="30" y1="110" x2="310" y2="110" stroke="#DDE8E3" stroke-width="0.5"/>
+          <!-- Y labels -->
+          <text x="22" y="24" font-size="8" fill="#8FA49C" text-anchor="end" font-family="Inter">140</text>
+          <text x="22" y="59" font-size="8" fill="#8FA49C" text-anchor="end" font-family="Inter">110</text>
+          <text x="22" y="94" font-size="8" fill="#8FA49C" text-anchor="end" font-family="Inter">80</text>
+          <!-- X labels -->
+          <text x="55" y="122" font-size="8" fill="#8FA49C" text-anchor="middle" font-family="Inter">0</text>
+          <text x="110" y="122" font-size="8" fill="#8FA49C" text-anchor="middle" font-family="Inter">30m</text>
+          <text x="180" y="122" font-size="8" fill="#8FA49C" text-anchor="middle" font-family="Inter">1h</text>
+          <text x="245" y="122" font-size="8" fill="#8FA49C" text-anchor="middle" font-family="Inter">1.5h</text>
+          <text x="305" y="122" font-size="8" fill="#8FA49C" text-anchor="middle" font-family="Inter">2h</text>
+          <!-- Average population fill -->
+          <path d="M55 90 Q100 70 140 60 Q175 52 200 58 Q235 66 270 78 Q290 85 310 90 L310 110 L55 110 Z" fill="url(#avgGrad)"/>
+          <path class="animated-spike delay" d="M55 90 Q100 70 140 60 Q175 52 200 58 Q235 66 270 78 Q290 85 310 90" fill="none" stroke="#94A3B8" stroke-width="1.5" stroke-dasharray="5 4" stroke-linecap="round"/>
+          <!-- YOUR spike fill -->
+          <path d="M55 90 Q85 75 110 40 Q135 18 160 22 Q185 26 200 48 Q225 70 260 84 Q285 90 310 90 L310 110 L55 110 Z" fill="url(#spikeGrad)"/>
+          <!-- YOUR spike line -->
+          <path class="animated-spike" d="M55 90 Q85 75 110 40 Q135 18 160 22 Q185 26 200 48 Q225 70 260 84 Q285 90 310 90" fill="none" stroke="#E05252" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Peak dot -->
+          <circle cx="160" cy="22" r="5" fill="#E05252" opacity="0"/>
+          <circle cx="160" cy="22" r="5" fill="#E05252" style="animation:peakAppear 0.4s ease 1.2s forwards;opacity:0"/>
+          <!-- Peak label -->
+          <text cx="160" cy="22" font-size="9" fill="#E05252" text-anchor="middle" font-family="Inter" font-weight="700" y="14" opacity="0" style="animation:peakAppear 0.4s ease 1.3s forwards">Peak +52</text>
+          <!-- Baseline indicator -->
+          <line x1="55" y1="90" x2="310" y2="90" stroke="var(--green)" stroke-width="1" stroke-dasharray="3 3" opacity="0.5"/>
+          <text x="56" y="88" font-size="8" fill="var(--green)" font-family="Inter" font-weight="600">Baseline</text>
+        </svg>
+        <style>
+          @keyframes peakAppear{from{opacity:0;transform:scale(0.5)}to{opacity:1;transform:scale(1)}}
+        </style>
+
+        <!-- Legend -->
+        <div class="spike-legend">
+          <div class="leg-item"><div class="leg-dot" style="background:#E05252"></div>Your predicted spike</div>
+          <div class="leg-item"><div class="leg-dot" style="background:#94A3B8"></div>Population avg</div>
+        </div>
+      </div>
+
+      <!-- Risk badge -->
+      <div class="risk-badge-wrap risk-high" id="risk-badge">
+        <div class="risk-badge-icon">⚡</div>
+        <div class="risk-badge-info">
+          <h4>High Spike Expected — Score 68/100</h4>
+          <p>White rice is the primary driver. Reducing the portion or adding protein first can reduce your spike by ~30%.</p>
+        </div>
+      </div>
+
+      <!-- KVP breakdown -->
+      <div class="section-label" style="padding:0 0 8px">Your Body's Response (Pitta Dominant)</div>
+      <div class="kvp-row">
+        <div class="kvp-pill">
+          <div class="kvp-name">Kapha</div>
+          <div class="kvp-bar-wrap"><div class="kvp-bar" style="width:35%;background:#3B82F6"></div></div>
+          <div class="kvp-val" style="color:#3B82F6">35</div>
+        </div>
+        <div class="kvp-pill">
+          <div class="kvp-name">Vata</div>
+          <div class="kvp-bar-wrap"><div class="kvp-bar" style="width:28%;background:#8B5CF6"></div></div>
+          <div class="kvp-val" style="color:#8B5CF6">28</div>
+        </div>
+        <div class="kvp-pill">
+          <div class="kvp-name">Pitta</div>
+          <div class="kvp-bar-wrap"><div class="kvp-bar" style="width:68%;background:#E05252"></div></div>
+          <div class="kvp-val" style="color:#E05252">68</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Timing tip -->
+    <div class="timing-card">
+      <div class="timing-icon">🕐</div>
+      <div class="timing-text">
+        <h5>Best time to eat this meal</h5>
+        <p>For Pitta types, eat Dal Chawal before 1pm. Eating after 7pm increases spike by ~22% for your body type.</p>
+      </div>
+    </div>
+
+    <!-- Swap suggestions -->
+    <div class="swap-section">
+      <div class="swap-header">
+        <span class="swap-icon">🔄</span>
+        <span class="swap-title">Works Better For You</span>
+      </div>
+
+      <div class="swap-card">
+        <div class="swap-from">
+          <div class="food">🍚</div>
+          <div class="name">White Rice</div>
+          <div class="impact" style="background:#FEE2E2;color:#DC2626">High spike</div>
+        </div>
+        <div class="swap-arrow">→</div>
+        <div class="swap-to">
+          <div class="food">🌾</div>
+          <div class="name">Brown Rice</div>
+          <div class="impact">Low spike</div>
+        </div>
+      </div>
+      <div class="swap-benefit" style="padding:0 4px;margin-top:-4px;font-size:11px;color:var(--muted);text-align:center;margin-bottom:10px">Reduces your spike score by ~24 points</div>
+
+      <div class="swap-card">
+        <div class="swap-from">
+          <div class="food">🍚</div>
+          <div class="name">Full Portion</div>
+          <div class="impact" style="background:#FEE2E2;color:#DC2626">2x rice</div>
+        </div>
+        <div class="swap-arrow">→</div>
+        <div class="swap-to">
+          <div class="food">🍽️</div>
+          <div class="name">Half Rice + Dal</div>
+          <div class="impact">Balanced</div>
+        </div>
+      </div>
+      <div class="swap-benefit" style="padding:0 4px;margin-top:-4px;font-size:11px;color:var(--muted);text-align:center;margin-bottom:10px">More protein slows glucose absorption</div>
+    </div>
+  </div>
+
+  <div class="cta">
+    <button class="btn-main" onclick="alert('Moving to feedback screen →')">I Ate This — Track My Actual Response</button>
+    <button class="btn-ghost" onclick="goBack(11)">Adjust Meal</button>
+  </div>
+</div>
+
+</div><!-- /phone -->
+
+<script>
+let cur = 10;
+let selectedMeal = '';
+
+const mealData = {
+  'Dal Chawal':       { icon:'🍛', gl:38, carb:'62g', spike:64, risk:'high' },
+  'Idli Sambar':      { icon:'🫓', gl:28, carb:'48g', spike:45, risk:'med'  },
+  'Chicken Biryani':  { icon:'🍚', gl:52, carb:'78g', spike:78, risk:'high' },
+  'Roti Sabzi':       { icon:'🫓', gl:22, carb:'38g', spike:38, risk:'low'  },
+  'Poha':             { icon:'🥣', gl:32, carb:'52g', spike:52, risk:'med'  },
+  'Masala Dosa':      { icon:'🥞', gl:44, carb:'65g', spike:68, risk:'high' },
+  'Chole Bhature':    { icon:'🍞', gl:58, carb:'88g', spike:82, risk:'high' },
+  'Upma':             { icon:'🥣', gl:30, carb:'50g', spike:48, risk:'med'  },
+  'Rajma Rice':       { icon:'🍛', gl:42, carb:'68g', spike:62, risk:'high' },
+  'Oats Upma':        { icon:'🥣', gl:18, carb:'30g', spike:28, risk:'low'  },
+  'Paneer Butter Masala':{ icon:'🍲', gl:36, carb:'42g', spike:55, risk:'med'}
+};
+
+function goTo(n){
+  document.getElementById('s'+cur).classList.remove('active');
+  const next=document.getElementById('s'+n);
+  next.classList.remove('back'); next.classList.add('active');
+  cur=n;
+  if(n===12) updatePrediction();
+}
+function goBack(n){
+  document.getElementById('s'+cur).classList.remove('active');
+  const prev=document.getElementById('s'+n);
+  prev.classList.add('back'); prev.classList.add('active');
+  cur=n;
+}
+
+function switchTab(tab){
+  ['type','photo','voice'].forEach(t=>{
+    document.getElementById('tab-'+t).classList.remove('active');
+    document.getElementById('view-'+t).style.display='none';
+  });
+  document.getElementById('tab-'+tab).classList.add('active');
+  document.getElementById('view-'+tab).style.display = tab==='voice' ? 'flex' : 'block';
+  if(tab==='voice') document.getElementById('view-voice').style.flexDirection='column';
+}
+
+function selectMeal(el, name){
+  document.querySelectorAll('.meal-chip').forEach(c=>c.classList.remove('sel'));
+  el.classList.add('sel');
+  selectedMeal = name;
+  document.getElementById('meal-search').value = name;
+  enablePredict();
+}
+
+function selectRecent(name){
+  selectedMeal = name;
+  document.getElementById('meal-search').value = name;
+  document.querySelectorAll('.meal-chip').forEach(c=>c.classList.remove('sel'));
+  enablePredict();
+}
+
+function enablePredict(){
+  const btn = document.getElementById('predict-btn');
+  btn.style.opacity='1'; btn.style.pointerEvents='auto';
+  // Update S11 & S12 with meal data
+  const d = mealData[selectedMeal] || mealData['Dal Chawal'];
+  document.getElementById('s11-name').textContent = selectedMeal;
+  document.getElementById('s11-icon').textContent = d.icon;
+  document.getElementById('tot-gl').textContent = d.gl;
+  document.getElementById('tot-carb').textContent = d.carb;
+  document.getElementById('tot-spike').textContent = d.spike;
+  document.getElementById('s12-meal-name').textContent = selectedMeal;
+}
+
+function clearSearch(){
+  document.getElementById('meal-search').value='';
+  selectedMeal='';
+  document.querySelectorAll('.meal-chip').forEach(c=>c.classList.remove('sel'));
+  document.getElementById('predict-btn').style.opacity='0.5';
+  document.getElementById('predict-btn').style.pointerEvents='none';
+}
+
+function updatePortion(el, valId, defaultVal){
+  const v = parseFloat(el.value);
+  document.getElementById(valId).textContent = v+'x';
+  const parent = el.closest('.ingr-item');
+  parent.classList.add('updated');
+  setTimeout(()=>parent.classList.remove('updated'),600);
+  // Recalculate totals dynamically
+  const riceEl = document.querySelector('#ingr-1 .portion-slider');
+  const dalEl = document.querySelector('#ingr-2 .portion-slider');
+  if(riceEl && dalEl){
+    const riceVal = parseFloat(riceEl.value);
+    const base = mealData[selectedMeal]||mealData['Dal Chawal'];
+    const newSpike = Math.min(100, Math.round(base.spike * (0.6 + riceVal*0.4)));
+    const newGL = Math.round(base.gl * riceVal * 0.8 + base.gl * 0.2);
+    document.getElementById('tot-spike').textContent = newSpike;
+    document.getElementById('tot-gl').textContent = newGL;
+  }
+}
+
+function updatePrediction(){
+  const d = mealData[selectedMeal]||mealData['Dal Chawal'];
+  const badge = document.getElementById('risk-badge');
+  badge.className='risk-badge-wrap';
+  if(d.risk==='high'){
+    badge.classList.add('risk-high');
+    badge.querySelector('.risk-badge-icon').textContent='⚡';
+    badge.querySelector('h4').textContent='High Spike Expected — Score '+d.spike+'/100';
+    badge.querySelector('p').textContent='Primary driver detected. Try swapping white rice or reducing portion to lower your spike.';
+  } else if(d.risk==='med'){
+    badge.classList.add('risk-med');
+    badge.querySelector('.risk-badge-icon').textContent='⚠️';
+    badge.querySelector('h4').textContent='Moderate Spike Expected — Score '+d.spike+'/100';
+    badge.querySelector('p').textContent='Manageable for your body type. Eating earlier in the day can reduce the impact further.';
+  } else {
+    badge.classList.add('risk-low');
+    badge.querySelector('.risk-badge-icon').textContent='✅';
+    badge.querySelector('h4').textContent='Low Spike Expected — Score '+d.spike+'/100';
+    badge.querySelector('p').textContent='Great choice for your Pitta body type. This meal sits well within your carb tolerance range.';
+  }
+}
+
+function simulateVoice(){
+  const btn = document.querySelector('.voice-btn');
+  btn.textContent='⏺️';
+  btn.style.background='#E05252';
+  setTimeout(()=>{
+    btn.textContent='🎙️';
+    btn.style.background='var(--green)';
+    const r = document.getElementById('voice-result');
+    r.style.display='block';
+    r.textContent='"Dal chawal with extra dal" — recognised ✓';
+    selectedMeal='Dal Chawal';
+    document.getElementById('meal-search').value='Dal Chawal (voice)';
+    enablePredict();
+  },2000);
+}
+
+// Default to Dal Chawal so screen 11 & 12 are populated
+selectedMeal = 'Dal Chawal';
+enablePredict();
+</script>
 </body>
 </html>
